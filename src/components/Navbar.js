@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { FaAngleDown, FaSignOutAlt } from 'react-icons/fa';
 
 const avatar = 'https://firebasestorage.googleapis.com/v0/b/homegrown-learning.appspot.com/o/avatar_katia.webp?alt=media&token=15295e33-bd7e-4948-90dd-cc60e6d5a2e2';
 
@@ -23,13 +24,16 @@ const Navbar = () => {
             </span>
           </Link>
           <div className="Navbar--Dropdown">
-            <span className="Navbar__Link">Material de clase</span>
+            <span className="Navbar__Link">Material de clase <FaAngleDown /></span>
             <ul className="Dropdown__Items">
               <Link to="">Vídeos</Link>
               <Link to="">Libros</Link>
               <Link to="">Podcasts</Link>
             </ul>
           </div>
+          <Link to="/">
+            <span className="Navbar__Link">Salir <FaSignOutAlt /></span>
+          </Link>
         </div>
       </nav>
     </Fragment>

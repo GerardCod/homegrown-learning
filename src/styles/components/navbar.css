@@ -1,0 +1,38 @@
+.Navbar {
+  background-color: var(--primary-color);
+  height: 15vh;
+  padding: 1rem;
+}
+
+.Navbar__Avatar {
+  width: 12vh;
+  height: 12vh;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.Navbar__Avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Navbar__User {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 30%;
+}
+
+.Navbar__Menu {
+  width: 50%;
+}
+
+.Navbar__Link {
+  color: white;
+}
+
+.Dropdown__Items {
+  display: none;
+}

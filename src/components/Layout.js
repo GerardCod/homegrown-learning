@@ -1,8 +1,11 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 const Layout = () => {
   return (
-    <div></div>
+    <div className="flex flex--column width--full height--auto">
+      <Navbar />
+    </div>
   );
 }
 

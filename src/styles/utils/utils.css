@@ -1,0 +1,46 @@
+
+/* Classes related to flexbox */
+.flex {
+  display: flex;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.content--center {
+  justify-content: center;
+}
+
+.items--center {
+  align-items: center;
+}
+
+.content--between {
+  justify-content: space-between;
+}
+
+.content--around {
+  justify-content: space-around;
+}
+
+/* Classses related to sizes */
+
+.width--full {
+  width: 100%;
+}
+
+.height--full {
+  height: 100%;
+}
+
+.height--auto {
+  height: auto;
+}
+
+.height--20vh {
+  height: 20vh;
+}
+
+/* Classes related to margin */
+

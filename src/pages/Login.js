@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Login.css";
 import img_login from "../assets/img/img_login.svg";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 
 function Login() {
+  const [redirect, setRedirect] = useState(false);
+
   return (
     <React.Fragment>
       <div className="LoginContainer">
+        {
+          redirect && <Redirect to="platform" />
+        }
         <div className="LoginForm">
           <div className="LoginForm__return">
             <BsChevronLeft color="#6f58c9" size="20px" /> <Link to="/">Regresar</Link>
@@ -25,7 +30,7 @@ function Login() {
               />
               <input type="password" name="" id="" placeholder="Contraseña" />
               <Link to="/forgotpassword">¿Olvidaste tu contraseña?</Link>
-              <button>Ingresar</button>
+              <button onClick={() => { setRedirect(true); }}>Ingresar</button>
             </div>
           </form>
         </div>

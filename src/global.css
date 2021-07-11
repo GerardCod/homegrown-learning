@@ -2,6 +2,7 @@
 @import url('./styles/utils/utils.css');
 @import url('./styles/components/navbar.css');
 @import url('./styles/components/pages.css');
+@import url('./styles/components/podcast.css');
 
 * {
     box-sizing: border-box;

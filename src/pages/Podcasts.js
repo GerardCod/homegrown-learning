@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import PodcastItem from '../components/PodcastItem';
 import { PodcastsContext } from '../contexts/PodcastsContext';
 import { onError } from '../utils';
+import Loader from '../components/Loader';
 
 const PodcastsPage = () => {
   const { state, fetchCollection, collectionRef } = useContext(PodcastsContext);
@@ -23,7 +24,7 @@ const PodcastsPage = () => {
           <div className="flex content--center">
             {
               state.loading ?
-                <p>Cargando...</p> :
+                <Loader /> :
                 (state.podcasts && state.podcasts.length > 0) ?
                   state.podcasts.map((element) => <PodcastItem podcast={element} key={`podcast: ${element.id}`} />) :
                   <p>No hay podcasts en la plataforma.</p>

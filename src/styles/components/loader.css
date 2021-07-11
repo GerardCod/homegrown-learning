@@ -1,5 +1,5 @@
 .Loader {
-  font-size: 5rem;
+  font-size: 5vmax;
   animation-name: loading;
   animation-duration: 1200ms;
   animation-iteration-count: infinite;

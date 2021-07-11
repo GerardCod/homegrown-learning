@@ -8,3 +8,7 @@
 .PodcastItem__Content {
   margin-left: 1rem;
 }
+
+.PodcastItem__Icon {
+  font-size: 3.5rem;
+}

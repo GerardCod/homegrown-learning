@@ -51,6 +51,9 @@
 }
 
 /* Classes related to margin */
+.margin--none {
+  margin: 0;
+}
 
 /* Classes related to cursor */
 .cursor--pointer {
@@ -60,6 +63,10 @@
 /* Classes related to texts */
 .text--white {
   color: white;
+}
+
+.text--accent {
+  color: var(--accent-color);
 }
 
 /* Classes of utils */

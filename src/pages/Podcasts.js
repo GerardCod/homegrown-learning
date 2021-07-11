@@ -1,6 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 const PodcastsPage = () => {
+
+  useEffect(() => {
+
+  }, []);
+
   return (
     <Fragment>
       <div>

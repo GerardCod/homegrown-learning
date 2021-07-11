@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 /**
  * Extracts the id and the content of a document from any collection of firebase.
@@ -8,3 +9,9 @@ export const collectIdAndData = doc => {
   const data = doc.data();
   return {id: doc.id, ...data};
 }
+
+export const onError = (text = 'Hubo un error en la operación', title = 'Lo siento mucho') => Swal.fire({
+  title,
+  text,
+  icon: 'error',
+}); 

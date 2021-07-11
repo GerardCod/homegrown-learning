@@ -20,13 +20,15 @@ const PodcastsPage = () => {
       <main className="Page flex content--center">
         <div className="container">
           <h1>Podcast subidos a la plataforma</h1>
-          {
-            state.loading ? 
-            <p>Cargando...</p> :
-            (state.podcasts && state.podcasts.length > 0) ?
-            state.podcasts.map((element) => <PodcastItem podcast={element} key={`podcast: ${element.id}`} />) :
-            <p>No hay podcasts en la plataforma.</p>
-          }
+          <div className="flex content--center">
+            {
+              state.loading ?
+                <p>Cargando...</p> :
+                (state.podcasts && state.podcasts.length > 0) ?
+                  state.podcasts.map((element) => <PodcastItem podcast={element} key={`podcast: ${element.id}`} />) :
+                  <p>No hay podcasts en la plataforma.</p>
+            }
+          </div>
         </div>
       </main>
     </Fragment>

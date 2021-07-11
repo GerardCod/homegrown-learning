@@ -33,6 +33,37 @@
   color: white;
 }
 
+.Navbar__Dropdown {
+  position: relative;
+}
+
 .Dropdown__Items {
-  display: none;
+  position: absolute;
+  border-radius: 5px;
+  z-index: -1;
+  height: 0;
+  overflow: hidden;
+  background-color: white;
+  bottom: -120px;
+  width: 100%;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
+.Dropdown__Items--Active {
+  animation-name: dropdown;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dropdown {
+  from {
+    height: 0;
+  }
+  
+  to {
+    height: auto;
+    z-index: 2;
+    padding: 1rem;
+  }
 }

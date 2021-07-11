@@ -34,6 +34,10 @@
   height: 100%;
 }
 
+.height--screen {
+  height: 100vh;
+}
+
 .height--auto {
   height: auto;
 }
@@ -44,3 +48,12 @@
 
 /* Classes related to margin */
 
+/* Classes related to cursor */
+.cursor--pointer {
+  cursor: pointer;
+}
+
+/* Classes related to texts */
+.text--white {
+  color: white;
+}

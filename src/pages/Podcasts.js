@@ -8,9 +8,12 @@ const PodcastsPage = () => {
 
   return (
     <Fragment>
-      <div>
-        <h1>Podcast subidos a la plataforma</h1>
-      </div>
+      <main className="Page flex content--center">
+        <div className="container">
+          <h1>Podcast subidos a la plataforma</h1>
+
+        </div>
+      </main>
     </Fragment>
   );
 };

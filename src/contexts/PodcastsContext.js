@@ -24,7 +24,7 @@ const PodcastsProvider = ({children}) => {
     );
   }, []);
 
-  const childProps = { fetchCollection }
+  const childProps = { fetchCollection, state };
 
   return (
     <PodcastsContext.Provider value={childProps}>

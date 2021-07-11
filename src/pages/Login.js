@@ -11,7 +11,7 @@ function Login() {
     <React.Fragment>
       <div className="LoginContainer">
         {
-          redirect && <Redirect to="platform" />
+          redirect && <Redirect to="/platform/podcasts" />
         }
         <div className="LoginForm">
           <div className="LoginForm__return">

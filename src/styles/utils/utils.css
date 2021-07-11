@@ -57,3 +57,10 @@
 .text--white {
   color: white;
 }
+
+/* Classes of utils */
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}

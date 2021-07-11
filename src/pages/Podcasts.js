@@ -21,7 +21,7 @@ const PodcastsPage = () => {
       <main className="Page flex content--center">
         <div className="container">
           <h1>Podcast subidos a la plataforma</h1>
-          <div className="flex content--center">
+          <div className="flex flex--column content--center">
             {
               state.loading ?
                 <Loader /> :

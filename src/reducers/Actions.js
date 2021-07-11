@@ -1,0 +1,6 @@
+
+export const LOADING = 'LOADING';
+export const FETCH_COLLECTION = 'FETCH_COLLECTION';
+export const ERROR = 'ERROR';
+export const FETCH_DOCUMENT = 'FETCH_DOCUMENT';
+export const RESPONSE_SUCCESSFUL = 'RESPONSE_SUCCESSFUL';

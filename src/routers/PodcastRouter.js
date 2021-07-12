@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, Switch, useRouteMatch } from 'react-router';
+import { Route, useRouteMatch } from 'react-router';
+import { Switch } from 'react-router-dom';
 import PodcastDetailPage from '../pages/PodcastDetailPage';
 import PodcastsPage from '../pages/Podcasts';
 
 const PodcastRouter = () => {
-  const { path } = useRouteMatch();
+  const { path } = useRouteMatch('/platform/podcasts');
 
+  console.log(path);
   return (
     <Switch>
       <Route path={path} exact component={PodcastsPage} />

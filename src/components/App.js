@@ -8,7 +8,7 @@ import PlatformRouter from "./PlatformRouter";
 function App() {
   return (
     <BrowserRouter>
-    <Switch>
+      <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={ForgotPassword} />

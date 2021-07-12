@@ -3,6 +3,7 @@ import PodcastItem from '../components/PodcastItem';
 import { PodcastsContext } from '../contexts/PodcastsContext';
 import { onError } from '../utils';
 import Loader from '../components/Loader';
+import Empty from '../components/Empty';
 
 const PodcastsPage = () => {
   const { state, fetchCollection, collectionRef } = useContext(PodcastsContext);
@@ -27,7 +28,7 @@ const PodcastsPage = () => {
                 <Loader /> :
                 (state.podcasts && state.podcasts.length > 0) ?
                   state.podcasts.map((element) => <PodcastItem podcast={element} key={`podcast: ${element.id}`} />) :
-                  <p>No hay podcasts en la plataforma.</p>
+                  <Empty message="No hay podcasts en la plataforma" />
             }
           </div>
         </div>

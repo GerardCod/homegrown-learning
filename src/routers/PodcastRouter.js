@@ -14,4 +14,4 @@ const PodcastRouter = () => {
   );
 }
 
-export default PodcastDetailPage;
+export default PodcastRouter;

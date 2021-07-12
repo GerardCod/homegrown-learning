@@ -1,0 +1,38 @@
+.AddComment {
+  margin-top: 1rem;
+  width: 40vmax;
+}
+
+.AddComment__Input {
+  width: 100%;
+  height: auto;
+  border-bottom-left-radius: 5% 50%;
+  border-bottom-right-radius: 5% 50%;
+  border-top-left-radius: 5% 50%;
+  border-top-right-radius: 5% 50%;
+  overflow: hidden;
+  border: 2px solid #cccccc;  
+}
+
+.AddComment__Input > input {
+  width: 80%;
+}
+
+.AddComment__Input > input,
+.AddComment__Input > button {
+  padding: .5rem;
+}
+
+.AddComment__Input > input {
+  border: 0;
+  padding-left: 1rem;
+}
+
+.AddComment__Input > button {
+  border: 0;
+  border-radius: 50%;
+}
+
+.AddComment__Input > input:focus {
+  outline: none;
+}

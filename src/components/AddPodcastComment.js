@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
+import { PodcastsContext } from '../contexts/PodcastsContext';
+import { onError, onSuccess } from '../utils';
 
-const AddPodcastComment = ({podcast}) => {
+const AddPodcastComment = ({ podcast }) => {
   const [data, setData] = useState({});
+  const { addPodcastComment } = useContext(PodcastsContext);
+  const formRef = useRef({});
 
   const handleChange = e => {
     setData({
       ...data,
-      [e.target.name]: e.event.value,
+      [e.target.name]: e.target.value.trim(),
     });
-  } 
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Submitting... ', data);
+    addPodcastComment(podcast, data.comment, { onSuccess, onError });
+    setData({});
+    formRef.current.reset();
   }
 
   return (
-    <form className="flex">
+    <form className="flex flex--column AddComment" onSubmit={handleSubmit} ref={formRef}>
       <label htmlFor="comment">Agrega un comentario</label>
-      <input type="text" required name="comment" id="comment" onChange={handleChange} />
-      <button>
-        <FaChevronRight />
-      </button>
+      <div className="AddComment__Input flex content--between">
+        <input type="text" required name="comment" id="comment" onChange={handleChange} />
+        <button disabled={!data.comment} className="cursor--pointer">
+          <FaChevronRight />
+        </button>
+      </div>
     </form>
   );
 }

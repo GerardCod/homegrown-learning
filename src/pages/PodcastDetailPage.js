@@ -4,6 +4,7 @@ import { PodcastsContext } from '../contexts/PodcastsContext';
 import Loader from '../components/Loader';
 import { onError } from '../utils';
 import Back from '../components/Back';
+import AddPodcastComment from '../components/AddPodcastComment';
 
 const PodcastDetailPage = () => {
   const { state, documentRef, fetchPodcast } = useContext(PodcastsContext);
@@ -32,10 +33,11 @@ const PodcastDetailPage = () => {
                   <source src={state.podcastSelected.url} type="audio/mp3" />
                 </audio>
 
+                <AddPodcastComment podcast={state.podcastSelected} />
                 <h2>Comentarios</h2>
                 {
                   (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&
-                  <span>Hay comentarios en el</span>
+                  <span>Hay comentarios en el podcast</span>
                 }
               </div>
               : <Loader />

@@ -15,3 +15,9 @@ export const onError = (text = 'Hubo un error en la operación', title = 'Lo sie
   text,
   icon: 'error',
 }); 
+
+export const onSuccess = (text = 'Éxito en la operación', title = 'Felicidades') => Swal.fire({
+  title,
+  text,
+  icon: 'success'
+});

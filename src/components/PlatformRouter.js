@@ -1,16 +1,20 @@
 import React, { Suspense } from 'react';
 import Layout from './Layout';
-import PodcastsPage from '../pages/Podcasts';
 import { Route } from 'react-router';
+import Loader from './Loader';
 
+//Providers
 const PodcastsProvider = React.lazy(() => import('../contexts/PodcastsContext'));
+
+//Routers
+const PodcastRouter = React.lazy(() => import('../routers/PodcastRouter'));
 
 const PlatformRouter = () => {
   return (
     <Layout>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader />}>
         <PodcastsProvider>
-          <Route path="/platform/podcasts" exact component={PodcastsPage} />
+          <Route path="/platform/podcasts" exact component={PodcastRouter} />
         </PodcastsProvider>
       </Suspense>
     </Layout>

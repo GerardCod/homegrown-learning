@@ -1,0 +1,77 @@
+
+/* Classes related to flexbox */
+.flex {
+  display: flex;
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.content--center {
+  justify-content: center;
+}
+
+.content--start {
+  justify-content: flex-start;
+}
+
+.items--center {
+  align-items: center;
+}
+
+.content--between {
+  justify-content: space-between;
+}
+
+.content--around {
+  justify-content: space-around;
+}
+
+/* Classses related to sizes */
+
+.width--full {
+  width: 100%;
+}
+
+.height--full {
+  height: 100%;
+}
+
+.height--screen {
+  height: 100vh;
+}
+
+.height--auto {
+  height: auto;
+}
+
+.height--20vh {
+  height: 20vh;
+}
+
+/* Classes related to margin */
+.margin--none {
+  margin: 0;
+}
+
+/* Classes related to cursor */
+.cursor--pointer {
+  cursor: pointer;
+}
+
+/* Classes related to texts */
+.text--white {
+  color: white;
+}
+
+.text--accent {
+  color: var(--accent-color);
+}
+
+/* Classes of utils */
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}

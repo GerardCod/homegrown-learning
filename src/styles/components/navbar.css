@@ -1,0 +1,69 @@
+.Navbar {
+  background-color: var(--primary-color);
+  height: 15vh;
+  padding: 1rem;
+}
+
+.Navbar__Avatar {
+  width: 12vh;
+  height: 12vh;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.Navbar__Avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Navbar__User {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 30%;
+}
+
+.Navbar__Menu {
+  width: 50%;
+}
+
+.Navbar__Link {
+  color: white;
+}
+
+.Navbar__Dropdown {
+  position: relative;
+}
+
+.Dropdown__Items {
+  position: absolute;
+  border-radius: 5px;
+  z-index: -1;
+  height: 0;
+  overflow: hidden;
+  background-color: white;
+  bottom: -120px;
+  width: 100%;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
+.Dropdown__Items--Active {
+  animation-name: dropdown;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dropdown {
+  from {
+    height: 0;
+  }
+  
+  to {
+    height: auto;
+    z-index: 2;
+    padding: 1rem;
+  }
+}

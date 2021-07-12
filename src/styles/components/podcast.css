@@ -1,0 +1,14 @@
+.PodcastItem {
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.PodcastItem__Content {
+  margin-left: 1rem;
+}
+
+.PodcastItem__Icon {
+  font-size: 3.5rem;
+}

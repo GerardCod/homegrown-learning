@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import PodcastsReducer, {initialState} from '../reducers/PodcastReducer';
 import { database } from '../firebase';
-import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING } from '../reducers/Actions';
+import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING, RESPONSE_SUCCESSFUL } from '../reducers/Actions';
 import { collectIdAndData } from '../utils';
 
 export const PodcastsContext = createContext();
@@ -39,7 +39,24 @@ const PodcastsProvider = ({children}) => {
     );
   }, []);
 
-  const childProps = { fetchCollection, state, collectionRef, fetchPodcast, documentRef };
+  const addPodcastComment = useCallback(async (podcast, comment, {onSuccess, onError}) => {
+    dispatch({type: LOADING});
+    try {
+      if (!podcast.comments) {
+        podcast.comments = [];
+      }
+
+      podcast.comments.push(comment);
+      await database.doc(`podcasts/${podcast.id}`).update(podcast);
+      dispatch({type: RESPONSE_SUCCESSFUL});
+      onSuccess('Comentario agregado exitosamente');
+    } catch (error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message);
+    }
+  }, []);
+
+  const childProps = { fetchCollection, state, collectionRef, fetchPodcast, documentRef, addPodcastComment };
 
   return (
     <PodcastsContext.Provider value={childProps}>

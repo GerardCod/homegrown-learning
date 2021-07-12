@@ -1,4 +1,4 @@
-import React, { createContext, useCallback } from 'react';
+import React, { createContext, useCallback, useReducer } from 'react';
 import AuthReducer, { initialState } from '../reducers/AuthReducer';
 import { ERROR, LOADING, USER_LOGGED } from '../reducers/Actions';
 import { auth, database } from '../firebase';

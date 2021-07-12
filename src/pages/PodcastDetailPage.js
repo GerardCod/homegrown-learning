@@ -37,7 +37,7 @@ const PodcastDetailPage = () => {
                 <h2>Comentarios</h2>
                 {
                   (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&
-                  <span>Hay comentarios en el podcast</span>
+                  state.podcastSelected.comments.map((comment, idx) => <p key={`comment: ${idx}`}>{comment}</p>)
                 }
               </div>
               : <Loader />

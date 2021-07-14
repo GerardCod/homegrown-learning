@@ -4,7 +4,6 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import PlatformRouter from "./PlatformRouter";
-
 import AuthProvider from '../contexts/AuthContext';
 
 function App() {

@@ -9,10 +9,10 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  const signIn = useCallback(async ({email, password, role: {name}}, {onError}) => {
+  const signIn = useCallback(async ({email, password, slugName}, {onError}) => {
     dispatch({type: LOADING});
     try {
-      const user = await searchUser(email, name);
+      const user = await searchUser(email, slugName);
       if (user) {
         await auth.signInWithEmailAndPassword(email, password);
       }
@@ -26,7 +26,7 @@ const AuthProvider = ({children}) => {
 
   const searchUser = useCallback(async (email, roleName) => {
     try {
-      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.name', '==', roleName).get();
+      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.slugName', '==', roleName).get();
       const user = collectIdAndData(userCollection.docs[0]);
       return user;
     } catch (error) {

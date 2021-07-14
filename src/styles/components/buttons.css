@@ -1,0 +1,9 @@
+.Button--Primary {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.Button--Primary:disabled {
+  background-color: var(--dark-primary-color);
+  cursor: default;
+}

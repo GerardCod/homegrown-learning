@@ -4,16 +4,19 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import PlatformRouter from "./PlatformRouter";
+import AuthProvider from '../contexts/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/forgotpassword" component={ForgotPassword} />
-        <Route path="/platform" component={PlatformRouter} />
-      </Switch>
+      <AuthProvider>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login/:role" component={Login} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route path="/platform" component={PlatformRouter} />
+        </Switch>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

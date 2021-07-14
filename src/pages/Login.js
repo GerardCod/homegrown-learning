@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "../styles/Login.css";
 import img_login from "../assets/img/img_login.svg";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
+import { AuthContext } from '../contexts/AuthContext';
+import { onError } from "../utils";
 
 function Login() {
   const [redirect, setRedirect] = useState(false);
+  const [data, setData] = useState({email: '', password: ''});
+  const { signIn } = useContext(AuthContext);
+  const formRef = useRef({});
+  const { role } = useParams();
+
+  const handleChange = e => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value.trim(),
+    });
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    signIn({...data, slugName: role}, { onError });
+    setData({email: '', password: ''});
+    formRef.current.reset();
+  }
 
   return (
     <React.Fragment>
@@ -20,17 +40,26 @@ function Login() {
           <div className="LoginForm__img">
             <img src={img_login} alt="" />
           </div>
-          <form>
+          <form onSubmit={handleSubmit} ref={ formRef }>
             <div className="LoginForm__inputs">
               <input
+                onChange={handleChange}
                 type="email"
-                name=""
-                id=""
+                name="email"
+                id="email"
                 placeholder="Correo electrónico"
+                value={data.email.trim()}
               />
-              <input type="password" name="" id="" placeholder="Contraseña" />
+              <input 
+                onChange={handleChange}
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Contraseña"
+                value={data.password.trim()}
+              />
               <Link to="/forgotpassword">¿Olvidaste tu contraseña?</Link>
-              <button onClick={() => { setRedirect(true); }}>Ingresar</button>
+              <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>
             </div>
           </form>
         </div>

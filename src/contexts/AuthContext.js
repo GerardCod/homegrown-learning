@@ -24,6 +24,11 @@ const AuthProvider = ({children}) => {
     }
   }, []);
 
+  const signOut = useCallback(() => {
+    auth.signOut();
+    localStorage.clear();
+  }, []);
+
   const searchUser = useCallback(async (email, roleName) => {
     try {
       const userCollection = await database.collection('accounts').where('email', '==', email).where('role.slugName', '==', roleName).get();
@@ -34,7 +39,7 @@ const AuthProvider = ({children}) => {
     }
   }, []);
 
-  const childProps = { state, signIn };
+  const childProps = { state, signIn, signOut };
 
   return (
     <AuthContext.Provider value={ childProps }>

@@ -1,14 +1,20 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaAngleDown, FaSignOutAlt } from 'react-icons/fa';
+import { AuthContext } from '../contexts/AuthContext';
 
 const avatar = 'https://firebasestorage.googleapis.com/v0/b/homegrown-learning.appspot.com/o/avatar_katia.webp?alt=media&token=15295e33-bd7e-4948-90dd-cc60e6d5a2e2';
 
 const Navbar = () => {
   const dropRef = useRef({});
+  const { signOut } = useContext(AuthContext);
 
   const revealDrop = () => {
     dropRef.current.classList.toggle('Dropdown__Items--Active');
+  }
+
+  const exit = () => {
+    signOut();
   }
 
   return (
@@ -37,7 +43,7 @@ const Navbar = () => {
               <Link to="">Podcasts</Link>
             </ul>
           </div>
-          <Link to="/">
+          <Link to="/" onClick={exit}>
             <span className="Navbar__Link">Salir <FaSignOutAlt /></span>
           </Link>
         </div>

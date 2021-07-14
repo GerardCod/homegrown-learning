@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import "../styles/Login.css";
 import img_login from "../assets/img/img_login.svg";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 import { AuthContext } from '../contexts/AuthContext';
 import { onError } from "../utils";
@@ -11,7 +11,8 @@ function Login() {
   const [data, setData] = useState({email: '', password: ''});
   const { signIn } = useContext(AuthContext);
   const formRef = useRef({});
-  
+  const { role } = useParams();
+
   const handleChange = e => {
     setData({
       ...data,
@@ -21,7 +22,7 @@ function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    signIn({...data}, { onError });
+    signIn({...data, slugName: role}, { onError });
     setData({email: '', password: ''});
     formRef.current.reset();
   }
@@ -47,7 +48,7 @@ function Login() {
                 name="email"
                 id="email"
                 placeholder="Correo electrónico"
-                value={data.email}
+                value={data.email.trim()}
               />
               <input 
                 onChange={handleChange}
@@ -55,7 +56,7 @@ function Login() {
                 name="password"
                 id="password"
                 placeholder="Contraseña"
-                value={data.password}
+                value={data.password.trim()}
               />
               <Link to="/forgotpassword">¿Olvidaste tu contraseña?</Link>
               <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>

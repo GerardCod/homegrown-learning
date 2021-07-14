@@ -10,7 +10,7 @@ function Home() {
     <React.Fragment>
       <div className="HomeList">
         <div className="HomeList__item">
-          <Link to="login" >
+          <Link to="login/E" >
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_classmate} alt="avatar" />
@@ -22,7 +22,7 @@ function Home() {
           </Link>
         </div>
         <div className="HomeList__item">
-          <Link to="login">
+          <Link to="login/T">
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_tutor} alt="avatar" />
@@ -34,7 +34,7 @@ function Home() {
           </Link>
         </div>
         <div className="HomeList__item">
-          <Link to="login">
+          <Link to="login/D">
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_teacher} alt="avatar" />

@@ -39,7 +39,6 @@ const AuthProvider = ({children}) => {
     localStorage.clear();
   }, []);
 
-
   const childProps = { state, signIn, signOut };
 
   return (

@@ -1,7 +1,9 @@
 import React, { Fragment, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaAngleDown, FaSignOutAlt } from 'react-icons/fa';
+import { FaAngleDown, FaBook, FaSignOutAlt } from 'react-icons/fa';
 import { AuthContext } from '../contexts/AuthContext';
+import DropdownItem from './DropdownItem';
+import { FaVideo, FaPodcast } from 'react-icons/fa';
 
 const avatar = 'https://firebasestorage.googleapis.com/v0/b/homegrown-learning.appspot.com/o/avatar_katia.webp?alt=media&token=15295e33-bd7e-4948-90dd-cc60e6d5a2e2';
 
@@ -38,9 +40,9 @@ const Navbar = () => {
           <div className="Navbar__Dropdown">
             <span className="Navbar__Link cursor--pointer" onClick={revealDrop}>Material de clase <FaAngleDown /></span>
             <ul className="Dropdown__Items flex flex--column" ref={dropRef}>
-              <Link to="">Vídeos</Link>
-              <Link to="">Libros</Link>
-              <Link to="">Podcasts</Link>
+              <DropdownItem text="Vídeos" to="/platform/videos" Icon={FaVideo} />
+              <DropdownItem text="Podcasts" to="/platform/podcasts" Icon={FaPodcast} />
+              <DropdownItem text="Libros" to="/platform/books" Icon={FaBook} />
             </ul>
           </div>
           <Link to="/" onClick={exit}>

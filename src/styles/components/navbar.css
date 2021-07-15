@@ -1,6 +1,6 @@
 .Navbar {
   background-color: var(--primary-color);
-  height: 15vh;
+  height: var(--navbar-height);
   padding: 1rem;
 }
 
@@ -40,11 +40,12 @@
 .Dropdown__Items {
   position: absolute;
   border-radius: 5px;
+  padding: 0;
   z-index: -1;
   height: 0;
   overflow: hidden;
   background-color: white;
-  bottom: -120px;
+  bottom: calc(var(--navbar-height) * (-1.6));
   width: 100%;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
 }
@@ -56,6 +57,18 @@
   animation-fill-mode: forwards;
 }
 
+.Dropdown__Item {
+  padding: 1rem;
+}
+
+.Dropdown__Item:hover {
+  background-color: var(--hover-drop-item);
+}
+
+.Dropdown__Item-Text {
+  margin-left: .4rem;
+}
+
 @keyframes dropdown {
   from {
     height: 0;
@@ -64,6 +77,6 @@
   to {
     height: auto;
     z-index: 2;
-    padding: 1rem;
+    padding: 0.15rem;
   }
 }

@@ -1,6 +1,11 @@
 :root {
+  /* Variables related to colors */
   --primary-color: #007EA8;
   --dark-primary-color: #004157;
   --border-color: #979797;
   --accent-color: #FF773D;
+  --hover-drop-item: #eeeeee;
+
+  /* Variables related to sizes */
+  --navbar-height: 15vh; 
 }

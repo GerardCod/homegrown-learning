@@ -9,6 +9,16 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
+  const searchUser = useCallback(async (email, roleName) => {
+    try {
+      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.slugName', '==', roleName).get();
+      const user = collectIdAndData(userCollection.docs[0]);
+      return user;
+    } catch (error) {
+      return error;
+    }
+  }, []);
+  
   const signIn = useCallback(async ({email, password, slugName}, {onError}) => {
     dispatch({type: LOADING});
     try {
@@ -22,21 +32,11 @@ const AuthProvider = ({children}) => {
       dispatch({type: ERROR, payload: error.message});
       onError(error.message);
     }
-  }, []);
+  }, [searchUser]);
 
   const signOut = useCallback(() => {
     auth.signOut();
     localStorage.clear();
-  }, []);
-
-  const searchUser = useCallback(async (email, roleName) => {
-    try {
-      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.slugName', '==', roleName).get();
-      const user = collectIdAndData(userCollection.docs[0]);
-      return user;
-    } catch (error) {
-      return error;
-    }
   }, []);
 
   const childProps = { state, signIn, signOut };

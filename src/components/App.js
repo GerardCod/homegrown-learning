@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login/:role" component={Login} />
-          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <Route exact path="/forgotpassword/:role" component={ForgotPassword} />
           <Route path="/platform" component={PlatformRouter} />
         </Switch>
       </AuthProvider>

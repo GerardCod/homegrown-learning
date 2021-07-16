@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useReducer } from 'react';
 import AuthReducer, { initialState } from '../reducers/AuthReducer';
-import { ERROR, LOADING, USER_LOGGED } from '../reducers/Actions';
+import { ERROR, LOADING, RESPONSE_SUCCESSFUL, USER_LOGGED } from '../reducers/Actions';
 import { auth, database } from '../firebase';
 import { collectIdAndData } from '../utils';
 
@@ -39,7 +39,19 @@ const AuthProvider = ({children}) => {
     localStorage.clear();
   }, []);
 
-  const childProps = { state, signIn, signOut };
+  const sendForgotPasswordEmail = useCallback(async (email, {onSuccess, onError}) => {
+    dispatch({type: LOADING});
+    try {
+      await auth.sendPasswordResetEmail(email);
+      dispatch({type: RESPONSE_SUCCESSFUL});
+      onSuccess(`Un correo para cambiar la contraseña fue enviado a ${email}`);
+    } catch (error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message);
+    }
+  }, []);
+
+  const childProps = { state, signIn, signOut, sendForgotPasswordEmail };
 
   return (
     <AuthContext.Provider value={ childProps }>

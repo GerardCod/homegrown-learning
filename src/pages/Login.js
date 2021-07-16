@@ -58,7 +58,7 @@ function Login() {
                 placeholder="Contraseña"
                 value={data.password.trim()}
               />
-              <Link to="/forgotpassword">¿Olvidaste tu contraseña?</Link>
+              <Link to={`/forgotpassword/${role}`}>¿Olvidaste tu contraseña?</Link>
               <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>
             </div>
           </form>

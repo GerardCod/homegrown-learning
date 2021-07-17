@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <React.Fragment>
-      <div className="HomeList">
+      <div className="HomeList flex flex--wrap">
+        <h1 className="text--white text--center title--main">Bienvenido a Homegrown Learning</h1>
         <div className="HomeList__item">
           <Link to="login/E" >
             <div className="card">
@@ -16,7 +17,7 @@ function Home() {
                 <img src={img_classmate} alt="avatar" />
               </div>
               <div className="HomeList__item__title">
-                <p>Alumno</p>
+                <p>Ingresar como estudiante</p>
               </div>
             </div>
           </Link>
@@ -28,7 +29,7 @@ function Home() {
                 <img src={img_tutor} alt="avatar" />
               </div>
               <div className="HomeList__item__title">
-                <p>Tutor</p>
+                <p>Ingresar como tutor</p>
               </div>
             </div>
           </Link>
@@ -40,7 +41,7 @@ function Home() {
                 <img src={img_teacher} alt="avatar" />
               </div>
               <div className="HomeList__item__title">
-                <p>Docente</p>
+                <p>Ingresar como docente</p>
               </div>
             </div>
           </Link>

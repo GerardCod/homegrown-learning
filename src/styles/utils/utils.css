@@ -8,6 +8,10 @@
   flex-direction: column;
 }
 
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
 .content--center {
   justify-content: center;
 }
@@ -26,6 +30,10 @@
 
 .content--around {
   justify-content: space-around;
+}
+
+.align-self--end {
+  align-self: flex-end;
 }
 
 /* Classses related to sizes */
@@ -67,6 +75,14 @@
 
 .text--accent {
   color: var(--accent-color);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.title--main {
+  font-size: 5vmax;
 }
 
 /* Classes of utils */

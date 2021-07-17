@@ -41,7 +41,7 @@ function Login() {
             <img src={img_login} alt="" />
           </div>
           <form onSubmit={handleSubmit} ref={ formRef }>
-            <div className="LoginForm__inputs">
+            <div className="LoginForm__inputs flex flex--column items--center">
               <input
                 onChange={handleChange}
                 type="email"
@@ -58,7 +58,7 @@ function Login() {
                 placeholder="Contraseña"
                 value={data.password.trim()}
               />
-              <Link to={`/forgotpassword/${role}`}>¿Olvidaste tu contraseña?</Link>
+              <Link to={`/forgotpassword/${role}`} className="align-self--end">¿Olvidaste tu contraseña?</Link>
               <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>
             </div>
           </form>

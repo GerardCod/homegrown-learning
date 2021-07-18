@@ -21,29 +21,25 @@ const PodcastDetailPage = () => {
 
   return (
     <Fragment>
-      <main className="Page">
-        <div className="container">
-          <Back backUrl="/platform/podcasts" />
-          {
-            state.podcastSelected ?
-              <div>
-                <h1>{state.podcastSelected.title}</h1>
-                <p>{state.podcastSelected.description}</p>
-                <audio controls>
-                  <source src={state.podcastSelected.url} type="audio/mp3" />
-                </audio>
+      <Back backUrl="/platform/podcasts" />
+      {
+        state.podcastSelected ?
+          <div>
+            <h2 className="Page__Title">{state.podcastSelected.title}</h2>
+            <p>{state.podcastSelected.description}</p>
+            <audio controls>
+              <source src={state.podcastSelected.url} type="audio/mp3" />
+            </audio>
 
-                <AddPodcastComment podcast={state.podcastSelected} />
-                <h2>Comentarios</h2>
-                {
-                  (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&
-                  state.podcastSelected.comments.map((comment, idx) => <p key={`comment: ${idx}`}>{comment}</p>)
-                }
-              </div>
-              : <Loader />
-          }
-        </div>
-      </main>
+            <AddPodcastComment podcast={state.podcastSelected} />
+            <h2>Comentarios</h2>
+            {
+              (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&
+              state.podcastSelected.comments.map((comment, idx) => <p key={`comment: ${idx}`}>{comment}</p>)
+            }
+          </div>
+          : <Loader />
+      }
     </Fragment>
   );
 }

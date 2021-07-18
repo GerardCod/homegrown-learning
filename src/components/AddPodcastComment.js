@@ -24,10 +24,10 @@ const AddPodcastComment = ({ podcast }) => {
 
   return (
     <form className="flex flex--column AddComment" onSubmit={handleSubmit} ref={formRef}>
-      <label htmlFor="comment">Agrega un comentario</label>
+      <label className="AddComment__Label" htmlFor="comment">Agrega un comentario</label>
       <div className="AddComment__Input flex content--between">
         <input type="text" required name="comment" id="comment" onChange={handleChange} />
-        <button disabled={!data.comment} className="cursor--pointer">
+        <button disabled={!data.comment} className="cursor--pointer Button--Primary text--white">
           <FaChevronRight />
         </button>
       </div>

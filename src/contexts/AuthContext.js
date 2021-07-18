@@ -58,7 +58,15 @@ const AuthProvider = ({children}) => {
     }
   }, []);
 
-  const childProps = { state, signIn, signOut, sendForgotPasswordEmail };
+  const getCurrentUser = useCallback(() => {
+    if (localStorage.getItem('user')) {
+      return JSON.parse(localStorage.getItem('user'));
+    }
+
+    return null;
+  }, []);
+
+  const childProps = { state, signIn, signOut, sendForgotPasswordEmail, getCurrentUser };
 
   return (
     <AuthContext.Provider value={ childProps }>

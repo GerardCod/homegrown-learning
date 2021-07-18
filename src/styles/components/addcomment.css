@@ -1,21 +1,26 @@
 .AddComment {
   margin-top: 1rem;
-  width: 40vmax;
+  width: 100%;
 }
 
 .AddComment__Input {
   width: 100%;
   height: auto;
-  border-bottom-left-radius: 2.5% 50%;
-  border-bottom-right-radius: 2.5% 50%;
-  border-top-left-radius: 2.5% 50%;
-  border-top-right-radius: 2.5% 50%;
+  border-bottom-left-radius: 5% 50%;
+  border-bottom-right-radius: 5% 50%;
+  border-top-left-radius: 5% 50%;
+  border-top-right-radius: 5% 50%;
   overflow: hidden;
   border: 2px solid #cccccc;  
 }
 
 .AddComment__Input > input {
   width: 80%;
+}
+
+.AddComment__Label {
+  margin-bottom: .5rem;
+  font-weight: bold;
 }
 
 .AddComment__Input > input,
@@ -30,9 +35,19 @@
 
 .AddComment__Input > button {
   border: 0;
+  padding: 0.25rem 0.5rem;
   border-radius: 50%;
 }
 
 .AddComment__Input > input:focus {
   outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .AddComment__Input {
+    border-bottom-left-radius: 2.5% 50%;
+    border-bottom-right-radius: 2.5% 50%;
+    border-top-left-radius: 2.5% 50%;
+    border-top-right-radius: 2.5% 50%;
+  }
 }

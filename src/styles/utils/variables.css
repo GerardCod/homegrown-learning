@@ -7,5 +7,14 @@
   --hover-drop-item: #eeeeee;
 
   /* Variables related to sizes */
-  --navbar-height: 15vh; 
+  --navbar-height: 10vh; 
+  --menu-width: 60vw;
+  --navbar-avatar: 8vmax;
+
+  /* Variables related to texts */
+  --date-podcast: 1.5vmax;
+  --page-title: 3.5vmax;
+  --title-podcast: 2.5vmax;
+  --icon-podcast: 5.5vmax;
+  
 }

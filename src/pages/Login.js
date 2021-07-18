@@ -7,7 +7,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import { onError } from "../utils";
 
 function Login() {
-  const [redirect, setRedirect] = useState(false);
   const [data, setData] = useState({email: '', password: ''});
   const { signIn } = useContext(AuthContext);
   const formRef = useRef({});
@@ -31,7 +30,7 @@ function Login() {
     <React.Fragment>
       <div className="LoginContainer">
         {
-          redirect && <Redirect to="/platform/podcasts" />
+          localStorage.getItem('user') && <Redirect to="/platform/podcasts" />
         }
         <div className="LoginForm">
           <div className="LoginForm__return">
@@ -59,7 +58,7 @@ function Login() {
                 value={data.password.trim()}
               />
               <Link to={`/forgotpassword/${role}`} className="align-self--end">¿Olvidaste tu contraseña?</Link>
-              <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>
+              <button className="Button--Primary" disabled={(!data.email || !data.password)}>Ingresar</button>
             </div>
           </form>
         </div>

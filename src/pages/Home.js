@@ -11,7 +11,7 @@ function Home() {
       <div className="HomeList flex flex--wrap">
         <h1 className="text--white text--center title--main">Bienvenido a Homegrown Learning</h1>
         <div className="HomeList__item">
-          <Link to="login/E" >
+          <Link to="login/Estudiante" >
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_classmate} alt="avatar" />
@@ -23,7 +23,7 @@ function Home() {
           </Link>
         </div>
         <div className="HomeList__item">
-          <Link to="login/T">
+          <Link to="login/Tutor">
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_tutor} alt="avatar" />
@@ -35,7 +35,7 @@ function Home() {
           </Link>
         </div>
         <div className="HomeList__item">
-          <Link to="login/D">
+          <Link to="login/Docente">
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_teacher} alt="avatar" />

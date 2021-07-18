@@ -36,6 +36,11 @@
   align-self: flex-end;
 }
 
+/* Classes related to css grid */
+.grid {
+  display: grid;
+}
+
 /* Classses related to sizes */
 
 .width--full {

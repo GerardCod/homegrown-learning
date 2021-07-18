@@ -10,11 +10,13 @@
   --navbar-height: 10vh; 
   --menu-width: 60vw;
   --navbar-avatar: 8vmax;
+  --comment-avatar: 6vmax;
 
   /* Variables related to texts */
   --date-podcast: 1.5vmax;
   --page-title: 3.5vmax;
   --title-podcast: 2.5vmax;
   --icon-podcast: 5.5vmax;
-  
+  --comment-message: 2vmax;
+  --comment-date: 1.5vmax;
 }

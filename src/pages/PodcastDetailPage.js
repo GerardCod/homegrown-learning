@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import { onError } from '../utils';
 import Back from '../components/Back';
 import AddPodcastComment from '../components/AddPodcastComment';
+import Comment from '../components/Comment';
 
 const PodcastDetailPage = () => {
   const { state, documentRef, fetchPodcast } = useContext(PodcastsContext);
@@ -35,7 +36,7 @@ const PodcastDetailPage = () => {
             <h2>Comentarios</h2>
             {
               (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&
-              state.podcastSelected.comments.map((comment, idx) => <p key={`comment: ${idx}`}>{comment}</p>)
+              state.podcastSelected.comments.map((comment, idx) => <Comment {...comment} key={`comment-${idx}`} />)
             }
           </div>
           : <Loader />

@@ -1,0 +1,70 @@
+.Comment {
+  width: 100%;
+  grid-template-columns: 15% 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.Comment__Avatar {
+  margin: 0;
+  width: var(--comment-avatar);
+  height: var(--comment-avatar);
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+}
+
+.Comment__Avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Comment__Message {
+  font-size: var(--comment-message); 
+}
+
+.Comment__Date {
+  font-size: var(--comment-date);
+}
+
+.Comment__Username {
+  margin: 0;
+}
+
+@media screen and (min-width: 540px) {
+  .Comment {
+    grid-template-columns: 12.5% 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Comment__Message {
+    --comment-message: 1.75vmax
+  }
+
+  .Comment {
+    grid-template-columns: 12% 1fr;
+  }
+
+  .Comment__Avatar {
+    --comment-avatar: 5vmax;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Comment {
+    grid-template-columns: 10% 1fr;
+  }
+  
+  .Comment__Message {
+    --comment-message: 1.25vmax;
+  }
+  
+  .Comment__Date {
+    --comment-date: 1vmax;
+  }
+}

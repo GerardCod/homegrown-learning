@@ -7,7 +7,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import { onError } from "../utils";
 
 function Login() {
-  const [redirect, setRedirect] = useState(false);
   const [data, setData] = useState({email: '', password: ''});
   const { signIn } = useContext(AuthContext);
   const formRef = useRef({});
@@ -31,7 +30,7 @@ function Login() {
     <React.Fragment>
       <div className="LoginContainer">
         {
-          redirect && <Redirect to="/platform/podcasts" />
+          localStorage.getItem('user') && <Redirect to="/platform/podcasts" />
         }
         <div className="LoginForm">
           <div className="LoginForm__return">
@@ -41,7 +40,7 @@ function Login() {
             <img src={img_login} alt="" />
           </div>
           <form onSubmit={handleSubmit} ref={ formRef }>
-            <div className="LoginForm__inputs">
+            <div className="LoginForm__inputs flex flex--column items--center">
               <input
                 onChange={handleChange}
                 type="email"
@@ -58,8 +57,8 @@ function Login() {
                 placeholder="Contraseña"
                 value={data.password.trim()}
               />
-              <Link to={`/forgotpassword/${role}`}>¿Olvidaste tu contraseña?</Link>
-              <button className="Button--Primary" onClick={() => { setRedirect(true); }} disabled={(!data.email || !data.password)}>Ingresar</button>
+              <Link to={`/forgotpassword/${role}`} className="align-self--end">¿Olvidaste tu contraseña?</Link>
+              <button className="Button--Primary" disabled={(!data.email || !data.password)}>Ingresar</button>
             </div>
           </form>
         </div>

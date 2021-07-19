@@ -7,7 +7,6 @@ import PodcastsPage from '../pages/Podcasts';
 const PodcastRouter = () => {
   const { path } = useRouteMatch('/platform/podcasts');
 
-  console.log(path);
   return (
     <Switch>
       <Route path={path} exact component={PodcastsPage} />

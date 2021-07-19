@@ -11,23 +11,30 @@ const AuthProvider = ({children}) => {
 
   const searchUser = useCallback(async (email, roleName) => {
     try {
-      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.slugName', '==', roleName).get();
+      const userCollection = await database.collection('accounts').where('email', '==', email).where('role.name', '==', roleName).get();
+      
+      if (userCollection.empty) {
+        throw new Error('No se encontró un usuario con ese correo y ese rol');
+      }
+
       const user = collectIdAndData(userCollection.docs[0]);
       return user;
     } catch (error) {
-      return error;
+      return error.message;
     }
   }, []);
   
   const signIn = useCallback(async ({email, password, slugName}, {onError}) => {
     dispatch({type: LOADING});
     try {
-      const user = await searchUser(email, slugName);
-      if (user) {
-        await auth.signInWithEmailAndPassword(email, password);
+      const response = await searchUser(email, slugName);
+      if (typeof response == 'string') {
+        throw new Error(response);
       }
-      localStorage.setItem('user', JSON.stringify(user));
-      dispatch({type: USER_LOGGED, payload: user});
+
+      await auth.signInWithEmailAndPassword(email, password);
+      localStorage.setItem('user', JSON.stringify(response));
+      dispatch({type: USER_LOGGED, payload: response});
     } catch (error) {
       dispatch({type: ERROR, payload: error.message});
       onError(error.message);
@@ -51,7 +58,15 @@ const AuthProvider = ({children}) => {
     }
   }, []);
 
-  const childProps = { state, signIn, signOut, sendForgotPasswordEmail };
+  const getCurrentUser = useCallback(() => {
+    if (localStorage.getItem('user')) {
+      return JSON.parse(localStorage.getItem('user'));
+    }
+
+    return null;
+  }, []);
+
+  const childProps = { state, signIn, signOut, sendForgotPasswordEmail, getCurrentUser };
 
   return (
     <AuthContext.Provider value={ childProps }>

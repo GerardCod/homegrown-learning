@@ -1,3 +1,19 @@
 .Page {
   padding: 1rem;
 }
+
+.Page__Title {
+  font-size: var(--page-title);
+}
+
+@media screen and (min-width: 768px) {
+  .Page__Title {
+    --page-title: 2.5vmax;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Page__Title {
+    --page-title: 2vmax;
+  }
+}

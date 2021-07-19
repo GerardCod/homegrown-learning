@@ -5,7 +5,7 @@ const Comment = ({user: {name, avatar}, comment, postDate, postTime}) => {
     <Fragment>
       <article className="grid Comment">
         <figure className="Comment__Avatar">
-          <img src={avatar} />
+          <img src={avatar} alt="avatar_comment" />
         </figure>
         <div className="Comment__Content flex flex--column">
           <h5 className="Comment__Username">{name}</h5>

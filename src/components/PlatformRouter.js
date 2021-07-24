@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import Layout from './Layout';
 import { Route } from 'react-router';
 import Loader from './Loader';
-import VideosPage from '../pages/VideosPage';
 
 //Providers
 const PodcastsProvider = React.lazy(() => import('../contexts/PodcastsContext'));

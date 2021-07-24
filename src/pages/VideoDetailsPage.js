@@ -10,7 +10,7 @@ import { generateComment, onError, onSuccess } from '../utils';
 
 const VideoDetailsPage = () => {
   const { id } = useParams();
-  const { state, fetchVideo, documentRef, addComment } = useContext(VideoContext);
+  const { state, fetchVideo, documentRef, addComment, addView } = useContext(VideoContext);
   const { getCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -24,7 +24,8 @@ const VideoDetailsPage = () => {
   }, [fetchVideo, documentRef, id]);
 
   const handleEnd = () => {
-    console.log('Video ended');
+    const user = getCurrentUser();
+    addView(state.videoSelected, user, {onSuccess, onError});
   }
 
   const submitVideoComment = ({comment}) => {

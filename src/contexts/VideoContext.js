@@ -56,6 +56,23 @@ const VideoProvider = ({ children }) => {
     }
   }, []);
 
+  const addView = useCallback(async (video, user, {onSuccess, onError}) => {
+    dispatch({type: LOADING});
+    try {
+      if (!video.views) {
+        video.views = [];
+      }
+
+      video.views.push(user);
+      await database.doc(`videos/${video.id}`).update(video);
+      dispatch({type: RESPONSE_SUCCESSFUL});
+      onSuccess(`Acabas de ver ${video.title}`);
+    } catch(error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message);
+    }
+  }, []);
+
   const childProps = {
     state,
     collectionRef,
@@ -63,6 +80,7 @@ const VideoProvider = ({ children }) => {
     fetchVideos,
     fetchVideo,
     addComment,
+    addView,
   };
   
   return (

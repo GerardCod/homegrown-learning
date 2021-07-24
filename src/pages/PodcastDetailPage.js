@@ -2,14 +2,14 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { PodcastsContext } from '../contexts/PodcastsContext';
 import Loader from '../components/Loader';
-import { onError, onSuccess } from '../utils';
+import { generateComment, onError, onSuccess } from '../utils';
 import Back from '../components/Back';
 import AddPodcastComment from '../components/AddPodcastComment';
 import Comment from '../components/Comment';
 import { AuthContext } from '../contexts/AuthContext';
 
 const PodcastDetailPage = () => {
-  const { state, documentRef, fetchPodcast, addHeardPodcast } = useContext(PodcastsContext);
+  const { state, documentRef, fetchPodcast, addHeardPodcast, addPodcastComment } = useContext(PodcastsContext);
   const { getCurrentUser } = useContext(AuthContext); 
   const { id } = useParams();
 
@@ -27,6 +27,12 @@ const PodcastDetailPage = () => {
     addHeardPodcast(state.podcastSelected, {name, avatar}, {onSuccess, onError});
   }
 
+  const submitPodcastComment = ({comment}) => {
+    const user = getCurrentUser();
+    const newComment = generateComment(comment, user);
+    addPodcastComment(state.podcastSelected, newComment, {onSuccess, onError});
+  }
+
   return (
     <Fragment>
       <Back backUrl="/platform/podcasts" />
@@ -39,7 +45,7 @@ const PodcastDetailPage = () => {
               <source src={state.podcastSelected.url} type="audio/mp3" />
             </audio>
 
-            <AddPodcastComment podcast={state.podcastSelected} />
+            <AddPodcastComment submitComment={submitPodcastComment} />
             <h2>Comentarios</h2>
             {
               (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&

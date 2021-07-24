@@ -8,10 +8,10 @@ const PodcastRouter = () => {
   const { path } = useRouteMatch('/platform/podcasts');
 
   return (
-    <Switch>
+    <>
       <Route path={path} exact component={PodcastsPage} />
       <Route path={`${path}/:id`} component={PodcastDetailPage} />
-    </Switch>
+    </>
   );
 }
 

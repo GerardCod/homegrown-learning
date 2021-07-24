@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import Layout from './Layout';
 import { Route } from 'react-router';
 import Loader from './Loader';
-import { Switch } from 'react-router-dom';
 import VideosPage from '../pages/VideosPage';
 
 //Providers
@@ -15,16 +14,14 @@ const PodcastRouter = React.lazy(() => import('../routers/PodcastRouter'));
 const PlatformRouter = () => {
   return (
     <Layout>
-      <Switch>
         <Suspense fallback={<Loader />}>
           <PodcastsProvider>
-            <Route path="/platform/podcasts" exact component={PodcastRouter} />
+            <Route path="/platform/podcasts" component={PodcastRouter} />
           </PodcastsProvider>
           <VideosProvider>
             <Route path="/platform/videos" component={VideosPage} />
           </VideosProvider>
         </Suspense>
-      </Switch>
     </Layout>
   );
 }

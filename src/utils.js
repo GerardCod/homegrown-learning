@@ -51,3 +51,16 @@ export const roles = {
     slugName: 'D'
   }
 };
+
+export const generateComment = (comment, user) => {
+  const today = new Date();
+  return {
+    user: {
+      name: user.name,
+      avatar: user.avatar
+    },
+    comment,
+    postDate: today.toLocaleDateString('es-MX'),
+    postTime: today.toLocaleTimeString('es-MX'),
+  }
+}

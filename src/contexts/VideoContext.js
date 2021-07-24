@@ -42,6 +42,7 @@ const VideoProvider = ({ children }) => {
   const childProps = {
     state,
     collectionRef,
+    documentRef,
     fetchVideos,
     fetchVideo
   };

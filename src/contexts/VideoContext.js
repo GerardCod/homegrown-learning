@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import { database } from '../firebase';
-import { FETCH_COLLECTION, LOADING, ERROR, FETCH_DOCUMENT } from '../reducers/Actions';
+import { FETCH_COLLECTION, LOADING, ERROR, FETCH_DOCUMENT, RESPONSE_SUCCESSFUL } from '../reducers/Actions';
 import VideoReducer, { initialState } from '../reducers/VideoReducer';
 import { collectIdAndData } from '../utils';
 
@@ -39,12 +39,30 @@ const VideoProvider = ({ children }) => {
     );
   }, []);
 
+  const addComment = useCallback(async (video, comment, {onSuccess, onError}) => {
+    dispatch({type: LOADING});
+    try {
+      if (!video.comments) {
+        video.comments = [];
+      }
+
+      video.comments.push(comment);
+      await database.doc(`videos/${video.id}`).update(video);
+      dispatch({type: RESPONSE_SUCCESSFUL});
+      onSuccess('Tu comentario fue agregado exitosamente');
+    } catch (error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message)
+    }
+  }, []);
+
   const childProps = {
     state,
     collectionRef,
     documentRef,
     fetchVideos,
-    fetchVideo
+    fetchVideo,
+    addComment,
   };
   
   return (

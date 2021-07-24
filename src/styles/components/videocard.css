@@ -1,0 +1,57 @@
+.VideosGrid {
+  gap: 1rem;
+}
+
+.VideoCard {
+  width: var(--video-card-width);
+  height: var(--video-card-size);
+  border-radius: .8rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  flex: 1;
+}
+
+.VideoCard__Content {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 20%;
+}
+
+.VideoCard__Illustration {
+  background-color: var(--info-color);
+  width: 100%;
+  margin: 0;
+  color: var(--info-color-light);
+  font-size: 5vmax;
+}
+
+.VideoCard__Footer {
+  padding: 1vmax 1.5vmax;
+}
+
+.VideoCard__Footer > h4 {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .VideoCard {
+    --video-card-width: 25vmax;
+    --video-card-size: 25vmax;
+  }
+
+  .VideosGrid {
+    --video-card-width: 25vmax;
+    grid-template-columns: repeat(auto-fill, minmax(var(--video-card-width), 1fr));
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .VideoCard {
+    --video-card-width: 20vmax;
+    --video-card-size: 15vmax;
+  }
+
+  .VideosGrid {
+    --video-card-width: 20vmax;
+    grid-template-columns: repeat(auto-fill, minmax(var(--video-card-width), var(--video-card-width)));
+  }
+}

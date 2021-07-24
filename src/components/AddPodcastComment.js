@@ -1,13 +1,8 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FaChevronRight } from 'react-icons/fa';
-import { PodcastsContext } from '../contexts/PodcastsContext';
-import { onError, onSuccess } from '../utils';
-import { AuthContext } from '../contexts/AuthContext';
 
-const AddPodcastComment = ({ podcast }) => {
+const AddPodcastComment = ({ submitComment }) => {
   const [data, setData] = useState({});
-  const { addPodcastComment } = useContext(PodcastsContext);
-  const { getCurrentUser } = useContext(AuthContext);
   const formRef = useRef({});
 
   const handleChange = e => {
@@ -19,18 +14,7 @@ const AddPodcastComment = ({ podcast }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const { name, avatar } = getCurrentUser();
-    const today = new Date();
-    const comment = {
-      user: {
-        name,
-        avatar,
-      },
-      comment: data.comment,
-      postDate: today.toLocaleDateString('es-MX'),
-      postTime: today.toLocaleTimeString('es-MX')
-    }
-    addPodcastComment(podcast, comment, { onSuccess, onError });
+    submitComment(data)
     setData({});
     formRef.current.reset();
   }

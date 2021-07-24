@@ -10,6 +10,7 @@ const VideosProvider = React.lazy(() => import('../contexts/VideoContext'));
 
 //Routers
 const PodcastRouter = React.lazy(() => import('../routers/PodcastRouter'));
+const VideoRouter = React.lazy(() => import('../routers/VideoRouter'));
 
 const PlatformRouter = () => {
   return (
@@ -19,7 +20,7 @@ const PlatformRouter = () => {
             <Route path="/platform/podcasts" component={PodcastRouter} />
           </PodcastsProvider>
           <VideosProvider>
-            <Route path="/platform/videos" component={VideosPage} />
+            <Route path="/platform/videos" component={VideoRouter} />
           </VideosProvider>
         </Suspense>
     </Layout>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, useRouteMatch } from 'react-router';
-import { Switch } from 'react-router-dom';
 import PodcastDetailPage from '../pages/PodcastDetailPage';
 import PodcastsPage from '../pages/Podcasts';
 

@@ -9,7 +9,7 @@ const BookItem = ({book}) => {
         <FaBook className="text--info PodcastItem__Icon" />
         <div className="PodcastItem__Content">
           <h2 className="margin--none PodcastItem__Title">
-            <Link to="" className="text--info">
+            <Link to={`/platform/books/${book.id}`} className="text--info">
               {book.title}
             </Link>
           </h2>

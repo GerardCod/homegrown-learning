@@ -6,10 +6,12 @@ import Loader from './Loader';
 //Providers
 const PodcastsProvider = React.lazy(() => import('../contexts/PodcastsContext'));
 const VideosProvider = React.lazy(() => import('../contexts/VideoContext'));
+const BookProvider = React.lazy(() => import('../contexts/BookContext'));
 
 //Routers
 const PodcastRouter = React.lazy(() => import('../routers/PodcastRouter'));
 const VideoRouter = React.lazy(() => import('../routers/VideoRouter'));
+const BookRouter = React.lazy(() => import('../routers/BookRouter'));
 
 const PlatformRouter = () => {
   return (
@@ -21,6 +23,9 @@ const PlatformRouter = () => {
           <VideosProvider>
             <Route path="/platform/videos" component={VideoRouter} />
           </VideosProvider>
+          <BookProvider>
+            <Route path="/platform/books" component={BookRouter} />
+          </BookProvider>
         </Suspense>
     </Layout>
   );

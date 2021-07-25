@@ -86,6 +86,10 @@
   color: var(--accent-color);
 }
 
+.text--info {
+  color: var(--info-color);
+}
+
 .text--center {
   text-align: center;
 }

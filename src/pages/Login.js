@@ -30,7 +30,7 @@ function Login() {
     <React.Fragment>
       <div className="LoginContainer">
         {
-          localStorage.getItem('user') && <Redirect to="/platform/podcasts" />
+          localStorage.getItem('user') && <Redirect to="/platform/activities" />
         }
         <div className="LoginForm">
           <div className="LoginForm__return">

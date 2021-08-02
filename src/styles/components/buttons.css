@@ -1,3 +1,7 @@
+.Button {
+  padding: .75rem 1rem;
+}
+
 .Button--Primary {
   background-color: var(--primary-color);
   cursor: pointer;
@@ -6,4 +10,8 @@
 .Button--Primary:disabled {
   background-color: var(--dark-primary-color);
   cursor: default;
+}
+
+.Button--Round {
+  border-radius: .6rem;
 }

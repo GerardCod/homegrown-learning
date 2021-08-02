@@ -1,0 +1,19 @@
+.Submit {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.Submit__Input {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: var(--input-color);
+  padding: .5rem;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+.Submit__Instruction {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}

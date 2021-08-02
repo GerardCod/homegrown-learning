@@ -90,6 +90,10 @@
   color: var(--info-color);
 }
 
+.text--success {
+  color: var(--success-color);
+}
+
 .text--center {
   text-align: center;
 }

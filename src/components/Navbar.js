@@ -45,7 +45,7 @@ const Navbar = () => {
         </figure>
         <h3 className="Navbar__User text--white">Hola de nuevo {user.name}</h3>
         <div  className="flex Navbar__Menu" ref={menuRef}>
-          <Link to="" className="Navbar__Link flex align--center">
+          <Link to="/platform/activities" className="Navbar__Link flex align--center">
             <FaFile />
             <span>Actividades</span>
           </Link>

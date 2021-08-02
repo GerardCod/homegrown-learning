@@ -52,6 +52,12 @@ export const roles = {
   }
 };
 
+/**
+ * Creates a new comment object.
+ * @param string comment
+ * @param object user represents the currentUser data. 
+ * @returns comment object.
+ */
 export const generateComment = (comment, user) => {
   const today = new Date();
   return {
@@ -62,5 +68,31 @@ export const generateComment = (comment, user) => {
     comment,
     postDate: today.toLocaleDateString('es-MX'),
     postTime: today.toLocaleTimeString('es-MX'),
+  }
+}
+
+/**
+ * Generates a new submit object
+ * @param object submit content 
+ * @param object user Current user data
+ * @returns submit object
+ */
+export const generateSubmit = (submit, user) => {
+  const today = new Date();
+  return {
+    user: {
+      name: user.name,
+      avatar: user.avatar,
+    },
+    submit,
+    postDate: today.toLocaleDateString('es-MX'),
+  }
+}
+
+export const generateEvidenceFile = (url, id, name) => {
+  return {
+    id,
+    url,
+    name
   }
 }

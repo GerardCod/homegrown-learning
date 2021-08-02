@@ -7,6 +7,9 @@
   --hover-drop-item: #eeeeee;
   --info-color: #6F58C9;
   --info-color-light: #EDEAF8;
+  --success-color: #51CB20;
+  --success-color-light: #E8FAE1;
+  --input-color: #d8d8d8;
 
   /* Variables related to sizes */
   --navbar-height: 10vh; 

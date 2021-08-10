@@ -66,6 +66,7 @@ const ActivityProvider = ({ children }) => {
       activity.submits.push(submit);
       await database.doc(`activities/${activity.id}`).update(activity);
       dispatch({type: RESPONSE_SUCCESSFUL});
+      localStorage.removeItem('submit');
       onSuccess('Tu trabajo ha sido entregado');
     } catch (error) {
       dispatch({type: ERROR, payload: error.message});
@@ -80,10 +81,35 @@ const ActivityProvider = ({ children }) => {
       const urlRef = await storage.ref().child('submits').child(fileName).put(file);
       const url = await urlRef.ref.getDownloadURL();
       const newEvidenceFile = generateEvidenceFile(url, fileName, file.name);
+      const newEvidences = [...submit.evidences, newEvidenceFile];
       setSubmit({
         ...submit,
         evidences: [...submit.evidences, newEvidenceFile],
       });
+      const submitCopy = JSON.parse(JSON.stringify(submit));
+      submitCopy.evidences = newEvidences;
+      localStorage.setItem('submit', JSON.stringify(submitCopy));
+      dispatch({type: RESPONSE_SUCCESSFUL});
+    } catch (error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message);
+    }
+  }, []);
+
+  const removeFileFromSubmit = useCallback(async (submit, file, {setSubmit, onError}) => {
+    dispatch({type: LOADING});
+    try {
+      await storage.ref().child('submits').child(file.id).delete();
+      const evidencesFiltered = submit.evidences.filter(e => e.id !== file.id);
+      
+      setSubmit({
+        ...submit,
+        evidences: evidencesFiltered
+      });
+
+      const submitCopy = JSON.parse(JSON.stringify(submit));
+      submitCopy.evidences = evidencesFiltered;
+      localStorage.setItem('submit', JSON.stringify(submitCopy));
       dispatch({type: RESPONSE_SUCCESSFUL});
     } catch (error) {
       dispatch({type: ERROR, payload: error.message});
@@ -99,7 +125,8 @@ const ActivityProvider = ({ children }) => {
     fetchActivity,
     addComment,
     addSubmit,
-    addFileToSubmit
+    addFileToSubmit,
+    removeFileFromSubmit,
   }
 
   return (

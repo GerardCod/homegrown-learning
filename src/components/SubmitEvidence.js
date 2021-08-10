@@ -5,8 +5,9 @@ import { generateSubmit, onError, onSuccess } from '../utils';
 import SubmitFileItem from './SubmitFileItem';
 
 const SubmitEvidence = ({ activity, email }) => {
-  const { addFileToSubmit, addSubmit } = useContext(ActivityContext);
-  const [data, setData] = useState({ evidences: [] });
+  const { addFileToSubmit, addSubmit, removeFileFromSubmit } = useContext(ActivityContext);
+  const initialState = (localStorage.getItem('submit')) ? JSON.parse(localStorage.getItem('submit')) : { evidences: [] };
+  const [data, setData] = useState(initialState);
   const formRef = useRef({});
   const { getCurrentUser } = useContext(AuthContext);
 
@@ -19,6 +20,10 @@ const SubmitEvidence = ({ activity, email }) => {
     console.log(file);
     addFileToSubmit(data, file, {setSubmit: setData, onError, email});
     formRef.current.reset();
+  }
+
+  const handleRemove = (file) => {
+    removeFileFromSubmit(data, file, { setSubmit: setData, onError });
   }
 
   const handleSubmit = e => {
@@ -38,7 +43,7 @@ const SubmitEvidence = ({ activity, email }) => {
         <button type="submit" className="Button Button--Primary Button--Round text--white" disabled={data.evidences.length === 0}>Entregar trabajo</button>
       </form>
       {
-        (data.evidences.length > 0) && data.evidences.map((file, idx) => <SubmitFileItem file={file} key={`submit-file: ${idx}`} />)
+        (data.evidences.length > 0) && data.evidences.map((file, idx) => <SubmitFileItem file={file} removeFile={handleRemove} key={`submit-file: ${idx}`} />)
       }
     </Fragment>
   );

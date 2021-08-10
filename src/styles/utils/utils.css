@@ -102,6 +102,20 @@
   font-size: 5vmax;
 }
 
+/* Classes related to positions */
+
+.position--relative {
+  position: relative;
+}
+
+.position--absolute {
+  position: absolute;
+}
+
+.position--fixed {
+  position: fixed;
+}
+
 /* Classes of utils */
 
 .container {

@@ -1,14 +1,13 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import AddPodcastComment from '../components/AddPodcastComment';
 import Back from '../components/Back';
-import Comment from '../components/Comment';
 import Loader from '../components/Loader';
 import SubmitComment from '../components/SubmitComment';
+import SubmitDetails from '../components/SubmitDetails';
 import SubmitEvidence from '../components/SubmitEvidence';
 import { ActivityContext } from '../contexts/ActivityContext';
 import { AuthContext } from '../contexts/AuthContext';
-import { generateComment, onError, onSuccess } from '../utils';
+import { onError } from '../utils';
 
 const ActivityDetailsPage = () => {
   const { id } = useParams();
@@ -33,7 +32,7 @@ const ActivityDetailsPage = () => {
           <p>{state.activitySelected.description}</p>
           {
             (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?
-            <h3>Ya entregaste esta actividad</h3> :
+            <SubmitDetails activity={state.activitySelected} user={getCurrentUser()} /> :
             (state.activitySelected.submitType === 'comment') ?
             <SubmitComment activity={ state.activitySelected } /> :
             <SubmitEvidence activity={ state.activitySelected } email={getCurrentUser().email} />

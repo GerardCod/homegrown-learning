@@ -1,21 +1,22 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useCallback } from 'react';
 import Comment from './Comment';
 import SubmitFileItem from './SubmitFileItem';
 
 const SubmitDetails = ({ activity, user }) => {
   const [data, setData] = useState();
 
-  const getMySubmit = activity => {
+  const getMySubmit = useCallback(activity => {
     const mySubmit = activity.submits.filter(e => e.user.email === user.email)[0];
     setData({ ...mySubmit });
-  }
+  }, [user.email])
 
   useEffect(() => {
     getMySubmit(activity);
-  }, [getMySubmit]);
+  }, [getMySubmit, activity]);
 
   return (
     <Fragment>
+      <h1>Tu entrega</h1>
       {
         (data && data.submit.evidences.length > 0) &&
         data.submit.evidences.map((e, idx) => <SubmitFileItem file={e} remove={false} key={`submit-file:${idx}`} />)

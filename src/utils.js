@@ -63,7 +63,8 @@ export const generateComment = (comment, user) => {
   return {
     user: {
       name: user.name,
-      avatar: user.avatar
+      avatar: user.avatar,
+      email: user.email,
     },
     comment,
     postDate: today.toLocaleDateString('es-MX'),
@@ -83,6 +84,7 @@ export const generateSubmit = (submit, user) => {
     user: {
       name: user.name,
       avatar: user.avatar,
+      email: user.email,
     },
     submit,
     postDate: today.toLocaleDateString('es-MX'),

@@ -12,7 +12,7 @@ import { generateComment, onError, onSuccess } from '../utils';
 
 const ActivityDetailsPage = () => {
   const { id } = useParams();
-  const { state, fetchActivity, documentRef, addComment } = useContext(ActivityContext);
+  const { state, fetchActivity, documentRef } = useContext(ActivityContext);
   const { getCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -23,12 +23,6 @@ const ActivityDetailsPage = () => {
     }
   }, [id, documentRef, fetchActivity]);
 
-  const submitComment = ({ comment }) => {
-    const user = getCurrentUser();
-    const newComment = generateComment(comment, user);
-    addComment(state.activitySelected, newComment, { onSuccess, onError });
-  }
-
   return (
     <Fragment>
       <Back backUrl="/platform/activities" />
@@ -38,18 +32,13 @@ const ActivityDetailsPage = () => {
           <h2 className="Page__Title">{state.activitySelected.title}</h2> 
           <p>{state.activitySelected.description}</p>
           {
-            (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.name === getCurrentUser().name).length > 0) ?
+            (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?
             <h3>Ya entregaste esta actividad</h3> :
             (state.activitySelected.submitType === 'comment') ?
             <SubmitComment activity={ state.activitySelected } /> :
             <SubmitEvidence activity={ state.activitySelected } email={getCurrentUser().email} />
           }
-          <AddPodcastComment submitComment={submitComment} />
-          <h3>Comentarios</h3>
-          {
-            (state.activitySelected.comments && state.activitySelected.comments.length > 0) &&
-            state.activitySelected.comments.map((comment, idx) => <Comment {...comment} key={`comment: ${idx}`} />)
-          }
+          
         </div> :
         <Loader />
       }

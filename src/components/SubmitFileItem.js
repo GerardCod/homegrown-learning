@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { FaFileAlt, FaTimes } from 'react-icons/fa';
-
 const SubmitFileItem = ({ file, removeFile, remove }) => {
+  
   return (
     <Fragment>
       <article className="PodcastItem flex content--start items--center">

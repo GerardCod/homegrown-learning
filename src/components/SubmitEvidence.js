@@ -43,7 +43,7 @@ const SubmitEvidence = ({ activity, email }) => {
         <button type="submit" className="Button Button--Primary Button--Round text--white" disabled={data.evidences.length === 0}>Entregar trabajo</button>
       </form>
       {
-        (data.evidences.length > 0) && data.evidences.map((file, idx) => <SubmitFileItem file={file} removeFile={handleRemove} key={`submit-file: ${idx}`} />)
+        (data.evidences.length > 0) && data.evidences.map((file, idx) => <SubmitFileItem file={file} removeFile={handleRemove} key={`submit-file: ${idx}`} remove />)
       }
     </Fragment>
   );

@@ -34,18 +34,6 @@ function Home() {
             </div>
           </Link>
         </div>
-        <div className="HomeList__item">
-          <Link to="login/Docente">
-            <div className="card">
-              <div className="HomeList__item__img">
-                <img src={img_teacher} alt="avatar" />
-              </div>
-              <div className="HomeList__item__title">
-                <p>Ingresar como docente</p>
-              </div>
-            </div>
-          </Link>
-        </div>
       </div>
     </React.Fragment>
   );

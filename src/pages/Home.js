@@ -1,7 +1,6 @@
 import React from "react";
 import img_classmate from "../assets/img/img_classmate.svg";
 import img_tutor from "../assets/img/img_tutor.svg";
-import img_teacher from "../assets/img/img_teacher.svg";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 

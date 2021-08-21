@@ -49,7 +49,7 @@ const Navbar = () => {
             <FaFile />
             <span>Actividades</span>
           </Link>
-          <Link to="" className="Navbar__Link flex align--center">
+          <Link to="/platform/assessments" className="Navbar__Link flex align--center">
             <FaCheck />
             <span>Evaluaciones</span>
           </Link>

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useRouteMatch, Route } from 'react-router';
+import AssessmentDetailsPage from '../pages/AssessmentDetailsPage';
 import AssessmentsPage from '../pages/AssessmentsPage';
 
 const AssessmentRouter = function Router() {
@@ -7,7 +8,8 @@ const AssessmentRouter = function Router() {
 
   return (
     <Fragment>
-      <Route path={path} component={AssessmentsPage} />
+      <Route path={path} exact component={AssessmentsPage} />
+      <Route path={`${path}/:id`} component={AssessmentDetailsPage} />
     </Fragment>
   );
 }

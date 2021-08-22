@@ -28,7 +28,7 @@ const AuthProvider = ({children}) => {
     dispatch({type: LOADING});
     try {
       const response = await searchUser(email, slugName);
-      if (typeof response == 'string') {
+      if (typeof response === 'string') {
         throw new Error(response);
       }
 

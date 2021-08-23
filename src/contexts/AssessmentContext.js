@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import AssessmentReducer, { initialState } from '../reducers/AssessmentReducer';
-import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING } from '../reducers/Actions';
+import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING, RESPONSE_SUCCESSFUL } from '../reducers/Actions';
 import { database } from '../firebase';
 import { collectIdAndData } from '../utils';
 
@@ -39,12 +39,29 @@ const AssessmentProvider = function Context({children}) {
     );
   }, []);
 
+  const addAssessmentSubmit = useCallback(async function callback(assessment, submit, { onError }) {
+    dispatch({type: LOADING});
+    try {
+      if (!assessment.submits) {
+        assessment.submits = [];
+      }
+
+      assessment.submits.push(submit);
+      await database.doc(`assessments/${assessment.id}`).update(assessment);
+      dispatch({type: RESPONSE_SUCCESSFUL});
+    } catch (error) {
+      dispatch({type: ERROR, payload: error.message});
+      onError(error.message);
+    }
+  }, []);
+
   const childProps = {
     state,
     collectionRef,
     documentRef,
     fetchCollection,
     fetchAssessment,
+    addAssessmentSubmit,
   }
 
   return (

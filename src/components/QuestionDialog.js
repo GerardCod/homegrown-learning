@@ -1,5 +1,5 @@
-import React from 'react';
-import { 
+import React, { useContext, useEffect } from 'react';
+import {
   FormControl,
   FormLabel,
   RadioGroup,
@@ -10,36 +10,81 @@ import {
   Radio,
   DialogActions,
   Button,
+  DialogContentText,
+  IconButton,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { ChevronLeft, ChevronRight, Send } from '@material-ui/icons';
+import { generateSubmit, onError } from '../utils';
+import { AuthContext } from '../contexts/AuthContext';
+import { SubmitAssessmentContext } from '../contexts/SubmitAssessmentContext';
+import { AssessmentContext } from '../contexts/AssessmentContext';
 
-function QuestionDialog({assessment, open, handleClose}) {
+function QuestionDialog({ assessment, open, handleClose }) {
+  const { state, answerQuestion, nextQuestion, previousQuestion, submitAssessment } = useContext(SubmitAssessmentContext);
+  const { getCurrentUser } = useContext(AuthContext);
+  const { addAssessmentSubmit } = useContext(AssessmentContext);
+
+  useEffect(() => {
+    if (state.score) {
+      const newSubmit = generateSubmit(state, getCurrentUser());
+      addAssessmentSubmit(assessment, newSubmit, { onError });
+      handleClose();
+    }
+  }, [state]);
+
   return (
-    <Dialog open={open} handleClose={handleClose}>
+    <Dialog open={open}>
       <DialogTitle>{assessment.title}</DialogTitle>
       <DialogContent dividers>
-        <h2>{assessment.questions[0].question}</h2>
-        <FormControl component="fieldset">
-          <FormLabel>Respuestas</FormLabel>
-          <RadioGroup>
-            {
-              assessment.questions[0].answers.map(a => {
-                return <FormControlLabel value={a.answer} control={<Radio />} label={a.answer} key={`answer-id: ${a.id}`} />
-              })
-            }
-          </RadioGroup>
-        </FormControl>
+        <h2>{state.questions[state.currentQuestionIndex].question}</h2>
+        <DialogContentText>
+          <FormControl component="fieldset">
+            <FormLabel>Respuestas</FormLabel>
+            <RadioGroup>
+              {
+                state.questions[state.currentQuestionIndex].answers.map(a => {
+                  return <FormControlLabel value={a.answer}
+                    control={
+                      <Radio
+                        onChange={() => { answerQuestion(a, state.questions[state.currentQuestionIndex].id); }}
+                        checked={state.questions[state.currentQuestionIndex].answerSelected && state.questions[state.currentQuestionIndex].answerSelected.answer === a.answer}
+                      />
+                    }
+                    label={a.answer} key={`answer-id: ${a.id}`} />
+                })
+              }
+            </RadioGroup>
+          </FormControl>
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button color="primary" onClick={handleClose}>Cerrar</Button>
-        <Button variant="contained" color="primary" onClick={handleClose}>Continuar</Button>
+        {
+          (state.currentQuestionIndex > 0) &&
+          <IconButton onClick={previousQuestion} color="primary" variant="contained">
+            <ChevronLeft />
+          </IconButton>
+        }
+        {
+          (state.currentQuestionIndex < state.questions.length - 1) &&
+          <IconButton onClick={nextQuestion} color="primary" variant="contained">
+            <ChevronRight />
+          </IconButton>
+        }
+        {
+          (state.currentQuestionIndex === (state.questions.length - 1)) &&
+          <Button endIcon={<Send />} variant="contained" color="primary" onClick={submitAssessment}>
+            Enviar
+          </Button>
+        }
       </DialogActions>
     </Dialog>
   );
 }
 
 QuestionDialog.propTypes = {
-  assessment: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
 }

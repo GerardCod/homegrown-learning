@@ -10,6 +10,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { green } from '@material-ui/core/colors';
 import { Assessment } from '@material-ui/icons';
 import QuestionDialog from '../components/QuestionDialog';
+import SubmitAssessmentProvider from '../contexts/SubmitAssessmentContext';
 
 const theme = createTheme({
   palette: {
@@ -67,7 +68,9 @@ const AssessmentDetailsPage = function Component() {
                       onClick={handleClick}
                     >Comenzar quiz</Button>
                   </ThemeProvider>
-                  <QuestionDialog open={openDialog} assessment={state.assessmentSelected} handleClose={handleClose} />
+                  <SubmitAssessmentProvider assessmentState={state.assessmentSelected}>
+                    <QuestionDialog assessment={state.assessmentSelected} open={openDialog} handleClose={handleClose} />
+                  </SubmitAssessmentProvider>
                 </div>
             }
           </div> :

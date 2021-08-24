@@ -27,7 +27,7 @@ const AssessmentResults = function Component() {
       const submit = state.assessmentSelected.submits.filter(s => s.user.email === getCurrentUser().email)[0];
       setSubmit({...submit});
     }
-  }, [state]);
+  }, [state, getCurrentUser]);
 
   return (
     <Fragment>

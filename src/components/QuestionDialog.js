@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   FormControl,
   FormLabel,
@@ -19,17 +19,20 @@ import { generateSubmit, onError } from '../utils';
 import { AuthContext } from '../contexts/AuthContext';
 import { SubmitAssessmentContext } from '../contexts/SubmitAssessmentContext';
 import { AssessmentContext } from '../contexts/AssessmentContext';
+import { Redirect } from 'react-router-dom';
 
 function QuestionDialog({ assessment, open, handleClose }) {
   const { state, answerQuestion, nextQuestion, previousQuestion, submitAssessment } = useContext(SubmitAssessmentContext);
   const { getCurrentUser } = useContext(AuthContext);
   const { addAssessmentSubmit } = useContext(AssessmentContext);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     if (state.score) {
       const newSubmit = generateSubmit(state, getCurrentUser());
       addAssessmentSubmit(assessment, newSubmit, { onError });
       handleClose();
+      setRedirect(true);
     }
   }, [state]);
 
@@ -38,6 +41,9 @@ function QuestionDialog({ assessment, open, handleClose }) {
       <DialogTitle>{assessment.title}</DialogTitle>
       <DialogContent dividers>
         <h2>{state.questions[state.currentQuestionIndex].question}</h2>
+        {
+          redirect && <Redirect to={`/platform/assessments/${assessment.id}/results`} />
+        }
         <DialogContentText>
           <FormControl component="fieldset">
             <FormLabel>Respuestas</FormLabel>
@@ -84,7 +90,6 @@ function QuestionDialog({ assessment, open, handleClose }) {
 }
 
 QuestionDialog.propTypes = {
-  title: PropTypes.string.isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
 }

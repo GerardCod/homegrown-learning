@@ -8,9 +8,11 @@ import AssessmentLink from '../components/AssessmentLink';
 import { Button, createTheme, makeStyles } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { green } from '@material-ui/core/colors';
-import { Assessment } from '@material-ui/icons';
+import { Assessment, Watch } from '@material-ui/icons';
 import QuestionDialog from '../components/QuestionDialog';
 import SubmitAssessmentProvider from '../contexts/SubmitAssessmentContext';
+import { AuthContext } from '../contexts/AuthContext';
+import { Redirect } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -29,6 +31,8 @@ const AssessmentDetailsPage = function Component() {
   const { state, documentRef, fetchAssessment } = useContext(AssessmentContext);
   const classes = styles();
   const [openDialog, setOpenDialog] = useState(false);
+  const { getCurrentUser } = useContext(AuthContext);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     fetchAssessment(id, { onError });
@@ -51,6 +55,9 @@ const AssessmentDetailsPage = function Component() {
     <Fragment>
       <Back backUrl="/platform/assessments" />
       {
+        redirect && <Redirect to={`/platform/assessments/${id}/results`} />
+      }
+      {
         state.assessmentSelected ?
           <div>
             <h1 className="Page__Title">{state.assessmentSelected.title}</h1>
@@ -60,13 +67,23 @@ const AssessmentDetailsPage = function Component() {
                 <AssessmentLink {...state.assessmentSelected} /> :
                 <div>
                   <ThemeProvider theme={theme}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      className={classes.root}
-                      startIcon={<Assessment />}
-                      onClick={handleClick}
-                    >Comenzar quiz</Button>
+                    {
+                      (state.assessmentSelected.submits && state.assessmentSelected.submits.filter(s => s.user.email === getCurrentUser().email)[0]) ?
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.root}
+                          startIcon={<Watch />}
+                          onClick={() => { setRedirect(true); }}
+                        >Ver resultados de la evaluación</Button> :
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.root}
+                          startIcon={<Assessment />}
+                          onClick={handleClick}
+                        >Comenzar quiz</Button>
+                    }
                   </ThemeProvider>
                   <SubmitAssessmentProvider assessmentState={state.assessmentSelected}>
                     <QuestionDialog assessment={state.assessmentSelected} open={openDialog} handleClose={handleClose} />

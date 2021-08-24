@@ -27,14 +27,18 @@ function QuestionDialog({ assessment, open, handleClose }) {
   const { addAssessmentSubmit } = useContext(AssessmentContext);
   const [redirect, setRedirect] = useState(false);
 
+  const handleSubmit = useCallback(() => {
+    const newSubmit = generateSubmit(state, getCurrentUser());
+    addAssessmentSubmit(assessment, newSubmit, { onError });
+    handleClose();
+    setRedirect(true);
+  }, []);
+
   useEffect(() => {
     if (state.score) {
-      const newSubmit = generateSubmit(state, getCurrentUser());
-      addAssessmentSubmit(assessment, newSubmit, { onError });
-      handleClose();
-      setRedirect(true);
+      handleSubmit();
     }
-  }, [state]);
+  }, [state, handleSubmit]);
 
   return (
     <Dialog open={open}>

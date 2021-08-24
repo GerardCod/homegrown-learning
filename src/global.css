@@ -1,6 +1,7 @@
 @import url('./styles/utils/variables.css');
 @import url('./styles/utils/utils.css');
 @import url('./styles/components/index.css');
+@import url('./styles/ResultsPage.css');
 
 * {
     box-sizing: border-box;

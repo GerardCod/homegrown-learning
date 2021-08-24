@@ -1,4 +1,4 @@
-import { createContext, useCallback, useReducer, useRef } from "react";
+import React, { createContext, useCallback, useReducer, useRef } from "react";
 import ActivityReducer, { initialState } from '../reducers/AcitvityReducer';
 import { database, storage } from '../firebase';
 import { collectIdAndData, generateEvidenceFile } from "../utils";

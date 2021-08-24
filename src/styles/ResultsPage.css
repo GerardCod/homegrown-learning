@@ -1,0 +1,19 @@
+.Results__Score {
+  width: 100%;
+  height: 15vh;
+  background-color: var(--success-color-light);
+  border-radius: 10px 1rem;
+}
+
+.Results__ScoreNumber {
+  font-size: 5vmax;
+}
+
+.QuestionItem {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px 10px;
+  margin-bottom: 1rem;
+}

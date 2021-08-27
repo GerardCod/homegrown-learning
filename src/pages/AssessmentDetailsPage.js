@@ -64,7 +64,7 @@ const AssessmentDetailsPage = function Component() {
             <p>{state.assessmentSelected.instructions}</p>
             {
               state.assessmentSelected.type === 'enlace' ?
-                <AssessmentLink {...state.assessmentSelected} /> :
+                <AssessmentLink assessment={state.assessmentSelected} /> :
                 <div>
                   <ThemeProvider theme={theme}>
                     {

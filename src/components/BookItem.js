@@ -13,7 +13,7 @@ const BookItem = ({book}) => {
               {book.title}
             </Link>
           </h2>
-          <span className="PodcastItem__Date">Subido el 10/08/2021</span>
+          <span className="PodcastItem__Date">Subido el {book.postDate} a las {book.postTime}</span>
         </div>
       </article>
     </Fragment>

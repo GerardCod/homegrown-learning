@@ -12,7 +12,7 @@ const ActivityItem = ({ activity }) => (
             { activity.title }
           </Link>
         </h2>
-        <span className="PodcastItem__Date">Subido el 10/07/2021</span>
+        <span className="PodcastItem__Date">Subido el {activity.postDate} a las {activity.postTime}</span>
       </div>
     </article>
   </Fragment>

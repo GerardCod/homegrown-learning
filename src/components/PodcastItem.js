@@ -12,7 +12,7 @@ const PodcastItem = ({podcast}) => {
             {podcast.title}
           </Link>
         </h2>
-        <span className="PodcastItem__Date">Subido el 10/07/2021</span>
+        <span className="PodcastItem__Date">Subido el {podcast.postDate} a las {podcast.postTime}</span>
       </div>
     </article>
   );

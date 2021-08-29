@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import "../styles/ForgotPassword.css";
-import img_login from "../assets/img/img_login.svg";
+import img_kid from '../assets/img/kid.png';
+import img_tutor from '../assets/img/teacher.png';
 import { Link, useParams } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 import { AuthContext } from "../contexts/AuthContext";
@@ -36,7 +37,7 @@ function ForgotPassword() {
             <Link to={`/login/${role}`}>Regresar</Link>
           </div>
           <div className="LoginForm__img">
-            <img src={img_login} alt="" />
+            <img src={role === 'Estudiante' ? img_kid : img_tutor} alt="forgot_avatar" />
           </div>
           <form onSubmit={handleSubmit} ref={formRef}>
             <div className="ForgotForm__inputs">

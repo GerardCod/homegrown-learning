@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import "../styles/Login.css";
-import img_login from "../assets/img/img_login.svg";
+import img_kid from '../assets/img/kid.png';
+import img_tutor from '../assets/img/teacher.png';
 import { Link, Redirect, useParams } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 import { AuthContext } from '../contexts/AuthContext';
@@ -37,7 +38,7 @@ function Login() {
             <BsChevronLeft color="#6f58c9" size="20px" /> <Link to="/">Regresar</Link>
           </div>
           <div className="LoginForm__img">
-            <img src={img_login} alt="" />
+            <img src={role === 'Estudiante' ? img_kid : img_tutor} alt="avatar_login" />
           </div>
           <form onSubmit={handleSubmit} ref={ formRef }>
             <div className="LoginForm__inputs flex flex--column items--center">

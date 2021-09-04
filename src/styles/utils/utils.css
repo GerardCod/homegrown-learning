@@ -94,6 +94,10 @@
   color: var(--success-color);
 }
 
+.text--primary {
+  color: var(--dark-primary-color);
+}
+
 .text--center {
   text-align: center;
 }

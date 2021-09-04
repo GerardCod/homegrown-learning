@@ -8,6 +8,7 @@ import SubmitEvidence from '../components/SubmitEvidence';
 import { ActivityContext } from '../contexts/ActivityContext';
 import { AuthContext } from '../contexts/AuthContext';
 import { onError } from '../utils';
+import MaterialLinkItem from '../components/MaterialLinkItem';
 
 const ActivityDetailsPage = () => {
   const { id } = useParams();
@@ -30,6 +31,12 @@ const ActivityDetailsPage = () => {
         <div>
           <h2 className="Page__Title">{state.activitySelected.title}</h2> 
           <p>{state.activitySelected.description}</p>
+          <br />
+            {
+              (state.activitySelected.links && state.activitySelected.links.length > 0 ) &&
+              state.activitySelected.links.map(link => <MaterialLinkItem material={link} key={`material-link: ${link.id}`} />)
+            }
+          <br />
           {
             (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?
             <SubmitDetails activity={state.activitySelected} user={getCurrentUser()} /> :

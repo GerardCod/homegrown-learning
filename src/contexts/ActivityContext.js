@@ -13,6 +13,7 @@ const ActivityProvider = ({ children }) => {
 
   const fetchActivities = useCallback(({onError}) => {
     dispatch({type: LOADING});
+    console.log('Fetching activities');
     collectionRef.current = database.collection('activities').onSnapshot(
       snapshot => {
         const activities = snapshot.docs.map(collectIdAndData);

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { FaFile } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const MaterialLinkItem = function Component({material}) {
   return (

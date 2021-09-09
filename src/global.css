@@ -2,10 +2,13 @@
 @import url('./styles/utils/utils.css');
 @import url('./styles/components/index.css');
 @import url('./styles/ResultsPage.css');
+@import url('./styles/HomePage.css');
 
 * {
     box-sizing: border-box;
     text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 
 body {

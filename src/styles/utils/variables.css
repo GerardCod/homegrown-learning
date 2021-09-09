@@ -2,6 +2,7 @@
   /* Variables related to colors */
   --primary-color: #007EA8;
   --dark-primary-color: #004157;
+  --light-primary-color: #DBF6FF;
   --border-color: #979797;
   --accent-color: #FF773D;
   --hover-drop-item: #eeeeee;
@@ -18,6 +19,7 @@
   --comment-avatar: 6vmax;
   --video-card-size: 30vmax;
   --video-card--width: 100%;
+  --home-navbar-height: 8vh;
 
   /* Variables related to texts */
   --date-podcast: 1.5vmax;

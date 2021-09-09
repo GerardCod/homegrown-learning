@@ -10,6 +10,7 @@ const Home = React.lazy(() => import('../pages/Home'));
 const Login = React.lazy(() => import('../pages/Login'));
 const ForgotPassword = React.lazy(() => import('../pages/ForgotPassword'));
 const PlatformRouter = React.lazy(() => import('./PlatformRouter'));
+const HomePage = React.lazy(() => import('../pages/HomePage'));
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Suspense fallback={<Loader />}>
         <AuthProvider>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/signin" component={Home} />
             <Route path="/login/:role" component={Login} />
             <Route path="/forgotpassword/:role" component={ForgotPassword} />
             <Route path="/platform" component={PlatformRouter} />

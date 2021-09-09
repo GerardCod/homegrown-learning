@@ -35,7 +35,7 @@ function Login() {
         }
         <div className="LoginForm">
           <div className="LoginForm__return">
-            <BsChevronLeft color="#6f58c9" size="20px" /> <Link to="/">Regresar</Link>
+            <BsChevronLeft color="#6f58c9" size="20px" /> <Link to="/signin">Regresar</Link>
           </div>
           <div className="LoginForm__img">
             <img src={role === 'Estudiante' ? img_kid : img_tutor} alt="avatar_login" />

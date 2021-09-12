@@ -60,35 +60,43 @@ const AssessmentDetailsPage = function Component() {
       {
         state.assessmentSelected ?
           <div>
+            <br />
             <h1 className="Page__Title">{state.assessmentSelected.title}</h1>
+            <br />
             <p>{state.assessmentSelected.instructions}</p>
+            <br />
             {
-              state.assessmentSelected.type === 'enlace' ?
-                <AssessmentLink assessment={state.assessmentSelected} /> :
-                <div>
-                  <ThemeProvider theme={theme}>
-                    {
-                      (state.assessmentSelected.submits && state.assessmentSelected.submits.filter(s => s.user.email === getCurrentUser().email)[0]) ?
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          className={classes.root}
-                          startIcon={<Watch />}
-                          onClick={() => { setRedirect(true); }}
-                        >Ver resultados de la evaluación</Button> :
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          className={classes.root}
-                          startIcon={<Assessment />}
-                          onClick={handleClick}
-                        >Comenzar quiz</Button>
-                    }
-                  </ThemeProvider>
-                  <SubmitAssessmentProvider assessmentState={state.assessmentSelected}>
-                    <QuestionDialog assessment={state.assessmentSelected} open={openDialog} handleClose={handleClose} />
-                  </SubmitAssessmentProvider>
-                </div>
+              (getCurrentUser().role.name === 'Estudiante') &&
+              <div>
+                {
+                  state.assessmentSelected.type === 'enlace' ?
+                    <AssessmentLink assessment={state.assessmentSelected} /> :
+                    <div>
+                      <ThemeProvider theme={theme}>
+                        {
+                          (state.assessmentSelected.submits && state.assessmentSelected.submits.filter(s => s.user.email === getCurrentUser().email)[0]) ?
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              className={classes.root}
+                              startIcon={<Watch />}
+                              onClick={() => { setRedirect(true); }}
+                            >Ver resultados de la evaluación</Button> :
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              className={classes.root}
+                              startIcon={<Assessment />}
+                              onClick={handleClick}
+                            >Comenzar quiz</Button>
+                        }
+                      </ThemeProvider>
+                      <SubmitAssessmentProvider assessmentState={state.assessmentSelected}>
+                        <QuestionDialog assessment={state.assessmentSelected} open={openDialog} handleClose={handleClose} />
+                      </SubmitAssessmentProvider>
+                    </div>
+                }
+              </div>
             }
           </div> :
           <Loader />

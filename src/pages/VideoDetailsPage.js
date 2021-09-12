@@ -14,7 +14,7 @@ const VideoDetailsPage = () => {
   const { getCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    fetchVideo(id, {onError});
+    fetchVideo(id, { onError });
     const subscriber = documentRef.current;
 
     return () => {
@@ -25,13 +25,13 @@ const VideoDetailsPage = () => {
 
   const handleEnd = () => {
     const user = getCurrentUser();
-    addView(state.videoSelected, user, {onSuccess, onError});
+    addView(state.videoSelected, user, { onSuccess, onError });
   }
 
-  const submitVideoComment = ({comment}) => {
+  const submitVideoComment = ({ comment }) => {
     const user = getCurrentUser();
     const newComment = generateComment(comment, user);
-    addComment(state.videoSelected, newComment, {onSuccess, onError});
+    addComment(state.videoSelected, newComment, { onSuccess, onError });
   }
 
   return (
@@ -39,20 +39,26 @@ const VideoDetailsPage = () => {
       <Back backUrl="/platform/videos" />
       {
         state.videoSelected ?
-        <div>
-          <h2 className="Page__Title">{state.videoSelected.title}</h2>
-          <video controls onEnded={handleEnd} className="width--full">
-            <source src={state.videoSelected.url} type="video/mp4" />
-          </video>
-
-          <AddPodcastComment submitComment={submitVideoComment} />
-          <h2>Comentarios</h2>
-          {
-            (state.videoSelected.comments && state.videoSelected.comments.length > 0) &&
-            state.videoSelected.comments.map((comment, idx) => <Comment {...comment} key={`comment: ${idx}`} />)
-          }
-        </div> :
-        <Loader />
+          <div>
+            <br />
+            <h2 className="Page__Title">{state.videoSelected.title}</h2>
+            <br />
+            <video controls onEnded={handleEnd} className="width--full">
+              <source src={state.videoSelected.url} type="video/mp4" />
+            </video>
+            <br />
+            <br />
+            {
+              (getCurrentUser().role.name === 'Estudiante') &&
+              <AddPodcastComment submitComment={submitVideoComment} />
+            }
+            <h2>Comentarios</h2>
+            {
+              (state.videoSelected.comments && state.videoSelected.comments.length > 0) &&
+              state.videoSelected.comments.map((comment, idx) => <Comment {...comment} key={`comment: ${idx}`} />)
+            }
+          </div> :
+          <Loader />
       }
     </Fragment>
   );

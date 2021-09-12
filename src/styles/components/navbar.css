@@ -70,6 +70,9 @@
 
 .Dropdown__Item {
   padding: 1rem;
+  transition-property: background-color;
+  transition-duration: 800ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .Dropdown__Item:hover {
@@ -79,6 +82,13 @@
 .Dropdown__Item-Text {
   margin-left: .4rem;
   color: white;
+  transition-property: color;
+  transition-duration: 800ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.Dropdown__Item:hover > .Dropdown__Item-Text {
+  color: var(--success-color);
 }
 
 .Navbar__Menu--Active {

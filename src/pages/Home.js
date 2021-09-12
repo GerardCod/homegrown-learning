@@ -22,13 +22,13 @@ function Home() {
           </Link>
         </div>
         <div className="HomeList__item">
-          <Link to="login/Tutor">
+          <Link to="login/Docente">
             <div className="card">
               <div className="HomeList__item__img">
                 <img src={img_tutor} alt="avatar" />
               </div>
               <div className="HomeList__item__title">
-                <p>Ingresar como tutor</p>
+                <p>Ingresar como docente</p>
               </div>
             </div>
           </Link>

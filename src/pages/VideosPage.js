@@ -20,6 +20,7 @@ const VideosPage = () => {
   return (
     <Fragment>
       <h2 className="Page__Title">Videos subidos a la plataforma</h2>
+      <br />
       <div className="flex flex--column items--center content--center">
         {
           state.loading ?

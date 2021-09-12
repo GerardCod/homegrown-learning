@@ -28,25 +28,32 @@ const ActivityDetailsPage = () => {
       <Back backUrl="/platform/activities" />
       {
         state.activitySelected ?
-        <div>
-          <h2 className="Page__Title">{state.activitySelected.title}</h2> 
-          <p>{state.activitySelected.description}</p>
-          <br />
+          <div>
+            <br />
+            <h2 className="Page__Title">{state.activitySelected.title}</h2>
+            <br />
+            <p>{state.activitySelected.description}</p>
+            <br />
             {
-              (state.activitySelected.links && state.activitySelected.links.length > 0 ) &&
+              (state.activitySelected.links && state.activitySelected.links.length > 0) &&
               state.activitySelected.links.map(link => <MaterialLinkItem material={link} key={`material-link: ${link.id}`} />)
             }
-          <br />
-          {
-            (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?
-            <SubmitDetails activity={state.activitySelected} user={getCurrentUser()} /> :
-            (state.activitySelected.submitType === 'comment') ?
-            <SubmitComment activity={ state.activitySelected } /> :
-            <SubmitEvidence activity={ state.activitySelected } email={getCurrentUser().email} />
-          }
-          
-        </div> :
-        <Loader />
+            <br />
+            {
+              (getCurrentUser().role.name === 'Estudiante') &&
+              <div>
+                {
+                  (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?
+                    <SubmitDetails activity={state.activitySelected} user={getCurrentUser()} /> :
+                    (state.activitySelected.submitType === 'comment') ?
+                      <SubmitComment activity={state.activitySelected} /> :
+                      <SubmitEvidence activity={state.activitySelected} email={getCurrentUser().email} />
+                }
+              </div>
+            }
+
+          </div> :
+          <Loader />
       }
     </Fragment>
   );

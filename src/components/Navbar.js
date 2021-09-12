@@ -37,8 +37,8 @@ const Navbar = () => {
       <nav className="flex width--full height--20vh Navbar items--center">
         {
           show ?
-          <FaBars className="text--white margin-right--1rem"  onClick={slideMenu} /> :
-          <FaTimes className="text--white margin-right--1rem" onClick={slideMenu} />
+          <FaBars className="text--white margin-right--1rem cursor--pointer"  onClick={slideMenu} /> :
+          <FaTimes className="text--white margin-right--1rem cursor--pointer" onClick={slideMenu} />
         }
         <figure className="Navbar__Avatar">
           <img src={user.avatar} alt="avatar_img" />

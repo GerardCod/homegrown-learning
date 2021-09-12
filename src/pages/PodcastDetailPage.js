@@ -39,13 +39,21 @@ const PodcastDetailPage = () => {
       {
         state.podcastSelected ?
           <div>
+            <br />
             <h2 className="Page__Title">{state.podcastSelected.title}</h2>
+            <br />
             <p>{state.podcastSelected.description}</p>
+            <br />
             <audio controls onEnded={hearPodcast}>
               <source src={state.podcastSelected.url} type="audio/mp3" />
             </audio>
-
-            <AddPodcastComment submitComment={submitPodcastComment} />
+            <br />
+            <br />
+            {
+              (getCurrentUser().role.name === 'Estudiante') && <AddPodcastComment submitComment={submitPodcastComment} />
+            }
+            
+            <br />
             <h2>Comentarios</h2>
             {
               (state.podcastSelected.comments && state.podcastSelected.comments.length > 0) &&

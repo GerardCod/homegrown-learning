@@ -27,12 +27,14 @@ const AuthProvider = ({children}) => {
   const signIn = useCallback(async ({email, password, slugName}, {onError}) => {
     dispatch({type: LOADING});
     try {
+      
+      await auth.signInWithEmailAndPassword(email, password);
       const response = await searchUser(email, slugName);
+      
       if (typeof response === 'string') {
         throw new Error(response);
       }
 
-      await auth.signInWithEmailAndPassword(email, password);
       localStorage.setItem('user', JSON.stringify(response));
       dispatch({type: USER_LOGGED, payload: response});
     } catch (error) {

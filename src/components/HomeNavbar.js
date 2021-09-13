@@ -8,7 +8,7 @@ const HomeNavbar = function Component() {
       <nav className="flex width--full HomeNavbar content--around items--center">
         <figure className="HomeNavbar__Logo flex items--center">
           <img src={logo} alt="logo_platform" />
-          <h4 className="HomeNavbar__Text">Homegrown Learning</h4>
+          <h4 className="HomeNavbar__Text">Homegrown Learning-Aprendizaje de cosecha propia</h4>
         </figure>
         <Link to="/signin" className="HomeNavbar__Text">
           Iniciar sesión

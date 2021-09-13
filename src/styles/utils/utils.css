@@ -36,6 +36,14 @@
   justify-content: space-around;
 }
 
+.content--end {
+  justify-content: flex-end;
+}
+
+.items--end {
+  align-items: flex-end;
+}
+
 .align-self--end {
   align-self: flex-end;
 }
@@ -108,6 +116,18 @@
 
 .title--main {
   font-size: 5vmax;
+}
+
+.font--italic {
+  font-style: italic;
+}
+
+.align--end {
+  text-align: end;
+}
+
+.align--center {
+  text-align: center;
 }
 
 /* Classes related to positions */

@@ -1,6 +1,7 @@
 import React from "react";
 import img_kid from "../assets/img/kid.png";
 import img_tutor from "../assets/img/teacher.png";
+import img_guest from '../assets/img/1.png';
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 
@@ -29,6 +30,18 @@ function Home() {
               </div>
               <div className="HomeList__item__title">
                 <p>Ingresar como docente</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+        <div className="HomeList__item">
+          <Link to="login/Invitado">
+            <div className="card">
+              <div className="HomeList__item__img">
+                <img src={img_guest} alt="avatar" />
+              </div>
+              <div className="HomeList__item__title">
+                <p>Ingresar como invitado</p>
               </div>
             </div>
           </Link>

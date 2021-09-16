@@ -31,7 +31,7 @@ function Login() {
     <React.Fragment>
       <div className="LoginContainer">
         {
-          localStorage.getItem('user') && <Redirect to="/platform/activities" />
+          (localStorage.getItem('user') || role === 'Invitado') && <Redirect to="/platform/activities" />
         }
         <div className="LoginForm">
           <div className="LoginForm__return">

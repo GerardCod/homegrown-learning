@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import DropdownItem from './DropdownItem';
 import { FaVideo, FaPodcast } from 'react-icons/fa';
 import { ClickAwayListener } from '@material-ui/core';
+import guest from '../assets/img/1.png';
 
 const Navbar = () => {
   const { signOut, getCurrentUser } = useContext(AuthContext);
@@ -48,9 +49,9 @@ const Navbar = () => {
               <FaTimes className="text--white margin-right--1rem cursor--pointer" onClick={hideMenu} />
           }
           <figure className="Navbar__Avatar">
-            <img src={user.avatar} alt="avatar_img" />
+            <img src={user.avatar || guest} alt="avatar_img" />
           </figure>
-          <h3 className="Navbar__User text--white">Hola de nuevo {user.name}</h3>
+          <h3 className="Navbar__User text--white">Hola de nuevo {user.name || 'Invitado'}</h3>
           <div className="flex Navbar__Menu" ref={menuRef}>
             <Link to="/platform/activities" className="Navbar__Link flex align--center">
               <FaFile />

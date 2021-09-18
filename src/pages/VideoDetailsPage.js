@@ -41,7 +41,7 @@ const VideoDetailsPage = () => {
         state.videoSelected ?
           <div>
             <br />
-            <h2 className="Page__Title">{state.videoSelected.title}</h2>
+            <h2 className="Page__Title align--justify">{state.videoSelected.title}</h2>
             <br />
             <video controls onEnded={handleEnd} className="width--full">
               <source src={state.videoSelected.url} type="video/mp4" />

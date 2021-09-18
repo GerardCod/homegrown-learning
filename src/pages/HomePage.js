@@ -20,11 +20,11 @@ const HomePage = function Component() {
         <section className="Home__Section flex flex--column content--center">
           <article className="flex flex--column Home__Paragraph">
             <h3 className="Home__Title">¡Hola!</h3>
-            <p className="Home__Text">Se bienvenido a Homegrown Learning-Aprendizaje de cosecha propia, tu plataforma para aprender de una forma diferente está creada especialmente para ti alumno de segundo grado de primaria, siéntete como si estuvieras en un aula, no olvides que puedes contactarme para cualquier duda que se te presente, mi información de contacto está en la parte inferior de esta página.</p>
-            <p className="Home__Text">Recuerda que tenemos que ser constantes en la práctica de la comprensión lectora, para poder ser grandes profesionales.</p>
+            <p className="Home__Text align--justify">Se bienvenido a Homegrown Learning-Aprendizaje de cosecha propia, tu plataforma para aprender de una forma diferente está creada especialmente para ti alumno de segundo grado de primaria, siéntete como si estuvieras en un aula, no olvides que puedes contactarme para cualquier duda que se te presente, mi información de contacto está en la parte inferior de esta página.</p>
+            <p className="Home__Text align--justify">Recuerda que tenemos que ser constantes en la práctica de la comprensión lectora, para poder ser grandes profesionales.</p>
             <br />
             <br />
-            <p className="Home__Text">¡Tú puedes!  No olvides que aquí está prohibido decir no puedo.</p>
+            <p className="Home__Text align--justify">¡Tú puedes!  No olvides que aquí está prohibido decir no puedo.</p>
             <br />
           </article>
 
@@ -34,7 +34,7 @@ const HomePage = function Component() {
             </figure>
             <figure>
               <blockquote>
-                <p className="font--italic Home__Text">Para concluir te invito a aprovechar todo el material de lectura que se encuentra en el apartado de “material de clase” en donde encontrarás desde diferentes lecturas, como videos y audios interesantes, diviértete.</p>
+                <p className="font--italic Home__Text align--justify">Para concluir te invito a aprovechar todo el material de lectura que se encuentra en el apartado de “material de clase” en donde encontrarás desde diferentes lecturas, como videos y audios interesantes, diviértete.</p>
               </blockquote>
               <br />
               <figcaption className="Home__Text align--end">LIE. Katia Rodríguez</figcaption>
@@ -46,7 +46,7 @@ const HomePage = function Component() {
           <article className="grid Hero__Article--Inverse items--center">
             <div>
               <h3 className="Home__Title">Objetivo</h3>
-              <p className="Home__Text">Reafirmar y estimular en el alumno la comprensión lectora por medio de la implementación de la plataforma E-Learning Homegrown Learning-aprendizaje de cosecha propia, haciendo uso de las Tecnologías de la Información y la Comunicación.</p>
+              <p className="Home__Text align--justify">Reafirmar y estimular en el alumno la comprensión lectora por medio de la implementación de la plataforma E-Learning Homegrown Learning-aprendizaje de cosecha propia, haciendo uso de las Tecnologías de la Información y la Comunicación.</p>
             </div>
             <figure className="Home__Img">
               <img src={teacher} alt="teacher_illustration" />
@@ -61,7 +61,7 @@ const HomePage = function Component() {
             </figure>
             <article>
               <h3 className="Home__Title">Propósito</h3>
-              <p className="Home__Text">Consolidar la comprensión lectora vigente en alumnos de 6 a 8 años a través de una plataforma E-Learning que integre la comprensión lectora con la adquisición de conocimientos en el trato de diversos temas, la cual está diseñada para el uso didáctico y como herramienta tecnológica para un Modelo Educativo Híbrido de niños de 6 a 8 años.</p>
+              <p className="Home__Text align--justify">Consolidar la comprensión lectora vigente en alumnos de 6 a 8 años a través de una plataforma E-Learning que integre la comprensión lectora con la adquisición de conocimientos en el trato de diversos temas, la cual está diseñada para el uso didáctico y como herramienta tecnológica para un Modelo Educativo Híbrido de niños de 6 a 8 años.</p>
             </article>
           </article>
         </section>

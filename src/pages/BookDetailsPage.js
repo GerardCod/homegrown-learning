@@ -25,13 +25,13 @@ const BookDetailsPage = () => {
         state.bookSelected ? 
         <div>
           <br />
-          <h2 className="Page__Title">
+          <h2 className="Page__Title align--justify">
             <a href={state.bookSelected.url} target="_blank" rel="noreferrer">
               {state.bookSelected.title}
             </a>
           </h2>
           <br />
-          <p>{state.bookSelected.description}</p>
+          <p className="align--justify">{state.bookSelected.description}</p>
           <br />
           <br />
           <iframe src={state.bookSelected.url} title={state.bookSelected.title} className="Page--Book"></iframe>

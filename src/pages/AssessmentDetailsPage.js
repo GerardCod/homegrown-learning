@@ -61,9 +61,9 @@ const AssessmentDetailsPage = function Component() {
         state.assessmentSelected ?
           <div>
             <br />
-            <h1 className="Page__Title">{state.assessmentSelected.title}</h1>
+            <h1 className="Page__Title align--justify">{state.assessmentSelected.title}</h1>
             <br />
-            <p>{state.assessmentSelected.instructions}</p>
+            <p className="align--justify">{state.assessmentSelected.instructions}</p>
             <br />
             {
               (getCurrentUser().role.name === 'Estudiante') &&

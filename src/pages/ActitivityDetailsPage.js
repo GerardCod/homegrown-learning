@@ -30,9 +30,9 @@ const ActivityDetailsPage = () => {
         state.activitySelected ?
           <div>
             <br />
-            <h2 className="Page__Title">{state.activitySelected.title}</h2>
+            <h2 className="Page__Title align--justify">{state.activitySelected.title}</h2>
             <br />
-            <p>{state.activitySelected.description}</p>
+            <p className="align--justify">{state.activitySelected.description}</p>
             <br />
             {
               (state.activitySelected.links && state.activitySelected.links.length > 0) &&

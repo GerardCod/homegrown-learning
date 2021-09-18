@@ -130,6 +130,10 @@
   text-align: center;
 }
 
+.align--justify {
+  text-align: justify;
+}
+
 /* Classes related to positions */
 
 .position--relative {

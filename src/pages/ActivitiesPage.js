@@ -19,7 +19,7 @@ const ActivitiesPage = () => {
 
   return (
     <Fragment>
-      <h2 className="Page__Title">Actividades subidas al plataforma.</h2>
+      <h2 className="Page__Title">Actividades subidas a la plataforma.</h2>
       <div className="flex flex--column items--center">
         {
           state.loading ?

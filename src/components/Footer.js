@@ -17,7 +17,7 @@ const Footer = function Component() {
           </div>
           <div className="flex text--white Contact">
             <FaMailBulk />
-            <span className="Contact__Value">katiacastrogz@gmail.com</span>
+            <span className="Contact__Value">katiacastrorgz@gmail.com</span>
           </div>
         </article>
       </footer>

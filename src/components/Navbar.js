@@ -72,7 +72,7 @@ const Navbar = () => {
               </span>
               <ul className="Dropdown__Items flex flex--column" ref={dropRef}>
                 <DropdownItem className="text--white" text="Vídeos" to="/platform/videos" Icon={FaVideo} />
-                <DropdownItem className="text--white" text="Podcasts" to="/platform/podcasts" Icon={FaPodcast} />
+                <DropdownItem className="text--white" text="Audios" to="/platform/podcasts" Icon={FaPodcast} />
                 <DropdownItem className="text--white" text="Libros" to="/platform/books" Icon={FaBook} />
               </ul>
             </div>

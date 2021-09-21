@@ -4,6 +4,7 @@
 
 .Page__Title {
   font-size: var(--page-title);
+  margin-bottom: 1rem;
 }
 
 .Page--Book {

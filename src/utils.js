@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
  */
 export const collectIdAndData = doc => {
   const data = doc.data();
-  return {id: doc.id, ...data};
+  return { id: doc.id, ...data };
 }
 
 /**
@@ -20,7 +20,7 @@ export const onError = (text = 'Hubo un error en la operación', title = 'Lo sie
   title,
   text,
   icon: 'error',
-}); 
+});
 
 /**
  * Shows a dialog with a success message.
@@ -97,4 +97,38 @@ export const generateEvidenceFile = (url, id, name) => {
     url,
     name
   }
+}
+
+/**
+ * Retrieves a new Date object from a given date and time.
+ * @author Gerardo Aguilar
+ * @param {*} date String that contains the post date of the document.
+ * @param {*} time String that contains the post time of the document.
+ * @returns 
+ */
+export const getDateFromItem = (date, time) => {
+  const dateSplited = date.split('/').reverse();
+  const timeSplited = time.split(':');
+
+  return new Date(
+    +dateSplited[0],
+    +dateSplited[1],
+    +dateSplited[2],
+    +timeSplited[0],
+    +timeSplited[1],
+    +timeSplited[2]
+  );
+}
+
+/**
+ * Sorts a collection of documents from firebase and returns the result.
+ * @param {*} arr Collection of documents from firebase.
+ * @returns a collection sorted by date.
+ */
+export const sortItems = arr => {
+  return [...arr].sort((a, b) => {
+    const dateA = getDateFromItem(a.postDate, a.postTime);
+    const dateB = getDateFromItem(b.postDate, b.postTime);
+    return dateB - dateA;
+  });
 }

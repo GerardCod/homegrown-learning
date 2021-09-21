@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useReducer, useRef } from "react";
 import ActivityReducer, { initialState } from '../reducers/AcitvityReducer';
 import { database, storage } from '../firebase';
-import { collectIdAndData, generateEvidenceFile } from "../utils";
+import { collectIdAndData, generateEvidenceFile, sortItems } from "../utils";
 import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING, RESPONSE_SUCCESSFUL } from "../reducers/Actions";
 
 export const ActivityContext = createContext();
@@ -17,7 +17,8 @@ const ActivityProvider = ({ children }) => {
     collectionRef.current = database.collection('activities').onSnapshot(
       snapshot => {
         const activities = snapshot.docs.map(collectIdAndData);
-        dispatch({type: FETCH_COLLECTION, payload: activities});
+        const sortedActivities = sortItems(activities);
+        dispatch({type: FETCH_COLLECTION, payload: sortedActivities});
       },
       error => {
         dispatch({type: ERROR, payload: error.message});

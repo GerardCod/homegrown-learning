@@ -19,7 +19,7 @@ const PodcastsPage = () => {
 
   return (
     <Fragment>
-      <h2 className="Page__Title">Podcast subidos a la plataforma</h2>
+      <h2 className="Page__Title">Audios subidos a la plataforma</h2>
       <div className="flex flex--column items--center">
         {
           state.loading ?

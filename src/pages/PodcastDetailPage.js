@@ -51,7 +51,7 @@ const PodcastDetailPage = () => {
             <br />
             <br />
             {
-              (getCurrentUser().role.name === 'Estudiante') && <AddPodcastComment submitComment={submitPodcastComment} />
+              (getCurrentUser()?.role.name === 'Estudiante') && <AddPodcastComment submitComment={submitPodcastComment} />
             }
             
             <br />

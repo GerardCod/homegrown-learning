@@ -41,7 +41,7 @@ const ActivityDetailsPage = () => {
             }
             <br />
             {
-              (getCurrentUser().role.name === 'Estudiante') &&
+              (getCurrentUser()?.role.name === 'Estudiante') &&
               <div>
                 {
                   (state.activitySelected.submits && state.activitySelected.submits.filter(s => s.user.email === getCurrentUser().email).length > 0) ?

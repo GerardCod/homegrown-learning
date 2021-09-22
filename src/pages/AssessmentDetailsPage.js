@@ -67,7 +67,7 @@ const AssessmentDetailsPage = function Component() {
             <TextDescription text={state.assessmentSelected.instructions} />
             <br />
             {
-              (getCurrentUser().role.name === 'Estudiante') &&
+              (getCurrentUser()?.role.name === 'Estudiante') &&
               <div>
                 {
                   state.assessmentSelected.type === 'enlace' ?

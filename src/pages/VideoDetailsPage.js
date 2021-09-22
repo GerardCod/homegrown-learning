@@ -51,7 +51,7 @@ const VideoDetailsPage = () => {
             <br />
             <br />
             {
-              (getCurrentUser().role.name === 'Estudiante') &&
+              (getCurrentUser()?.role.name === 'Estudiante') &&
               <AddPodcastComment submitComment={submitVideoComment} />
             }
             <h2>Comentarios</h2>

@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useReducer, useRef } from "react";
 import ActivityReducer, { initialState } from '../reducers/AcitvityReducer';
 import { database, storage } from '../firebase';
-import { collectIdAndData, generateEvidenceFile, sortItems } from "../utils";
+import { collectIdAndData, detectAndCreateLinks, generateEvidenceFile, sortItems } from "../utils";
 import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING, RESPONSE_SUCCESSFUL } from "../reducers/Actions";
 
 export const ActivityContext = createContext();
@@ -32,7 +32,8 @@ const ActivityProvider = ({ children }) => {
     documentRef.current = database.doc(`activities/${id}`).onSnapshot(
       snapshot => {
         const activity = collectIdAndData(snapshot);
-        dispatch({type: FETCH_DOCUMENT, payload: activity});
+        const processedActivity = detectAndCreateLinks(activity);
+        dispatch({type: FETCH_DOCUMENT, payload: processedActivity});
       },
       error => {
         dispatch({type: ERROR, payload: error.message});

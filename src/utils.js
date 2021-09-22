@@ -140,7 +140,7 @@ export const detectAndCreateLinks = (data, propName = 'description') => {
   const dataCopy = {...data};
   for (let word of words) {
     if (word.match(linkRegex)) {
-      dataCopy[propName] = dataCopy[propName].replace(word, `<a href=${word}>${word}</a>`);
+      dataCopy[propName] = dataCopy[propName].replace(word, `<a href=${word} target="_blank">${word}</a>`);
     }
   }
   return dataCopy;

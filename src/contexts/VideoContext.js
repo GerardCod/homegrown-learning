@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import { database } from '../firebase';
 import { FETCH_COLLECTION, LOADING, ERROR, FETCH_DOCUMENT, RESPONSE_SUCCESSFUL } from '../reducers/Actions';
 import VideoReducer, { initialState } from '../reducers/VideoReducer';
-import { collectIdAndData, sortItems } from '../utils';
+import { collectIdAndData, detectAndCreateLinks, sortItems } from '../utils';
 
 export const VideoContext = createContext();
 
@@ -31,7 +31,8 @@ const VideoProvider = ({ children }) => {
     documentRef.current = database.doc(`videos/${id}`).onSnapshot(
       snapshot => {
         const doc = collectIdAndData(snapshot);
-        dispatch({type: FETCH_DOCUMENT, payload: doc});
+        const videoProcessed = detectAndCreateLinks(doc);
+        dispatch({type: FETCH_DOCUMENT, payload: videoProcessed});
       },
       error => {
         dispatch({type: ERROR, payload: error.message});

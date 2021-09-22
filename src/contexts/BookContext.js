@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import BookReducer, {initialState } from '../reducers/BookReducer';
 import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING } from '../reducers/Actions';
 import { database } from '../firebase';
-import { collectIdAndData, sortItems } from '../utils';
+import { collectIdAndData, detectAndCreateLinks, sortItems } from '../utils';
 
 export const BookContext = createContext();
 
@@ -31,7 +31,8 @@ const BookProvider = ({children}) => {
     documentRef.current = database.doc(`books/${id}`).onSnapshot(
       snapshot => {
         const book = collectIdAndData(snapshot);
-        dispatch({type: FETCH_DOCUMENT, payload: book});
+        const processedBook = detectAndCreateLinks(book)
+        dispatch({type: FETCH_DOCUMENT, payload: processedBook});
       },
       error => {
         dispatch({type: ERROR, payload: error.message});

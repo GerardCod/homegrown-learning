@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useReducer, useRef } from 'react';
 import AssessmentReducer, { initialState } from '../reducers/AssessmentReducer';
 import { ERROR, FETCH_COLLECTION, FETCH_DOCUMENT, LOADING, RESPONSE_SUCCESSFUL } from '../reducers/Actions';
 import { database } from '../firebase';
-import { collectIdAndData, sortItems } from '../utils';
+import { collectIdAndData, detectAndCreateLinks, sortItems } from '../utils';
 
 export const AssessmentContext = createContext();
 
@@ -31,7 +31,8 @@ const AssessmentProvider = function Context({children}) {
     documentRef.current = database.doc(`assessments/${id}`).onSnapshot(
       snapshot => {
         const assessment = collectIdAndData(snapshot);
-        dispatch({type: FETCH_DOCUMENT, payload: assessment});
+        const processedAssessment = detectAndCreateLinks(assessment, 'instructions');
+        dispatch({type: FETCH_DOCUMENT, payload: processedAssessment});
       },
       error => {
         onError(error.message);

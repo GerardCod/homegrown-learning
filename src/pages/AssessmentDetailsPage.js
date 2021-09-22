@@ -13,6 +13,7 @@ import QuestionDialog from '../components/QuestionDialog';
 import SubmitAssessmentProvider from '../contexts/SubmitAssessmentContext';
 import { AuthContext } from '../contexts/AuthContext';
 import { Redirect } from 'react-router-dom';
+import TextDescription from '../components/TextDescription';
 
 const theme = createTheme({
   palette: {
@@ -63,7 +64,7 @@ const AssessmentDetailsPage = function Component() {
             <br />
             <h1 className="Page__Title align--justify">{state.assessmentSelected.title}</h1>
             <br />
-            <p className="align--justify">{state.assessmentSelected.instructions}</p>
+            <TextDescription text={state.assessmentSelected.instructions} />
             <br />
             {
               (getCurrentUser().role.name === 'Estudiante') &&

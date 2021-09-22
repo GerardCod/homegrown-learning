@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Back from '../components/Back';
 import Loader from '../components/Loader';
+import TextDescription from '../components/TextDescription';
 import { BookContext } from '../contexts/BookContext';
 import { onError } from '../utils';
 
@@ -31,8 +32,7 @@ const BookDetailsPage = () => {
             </a>
           </h2>
           <br />
-          <p className="align--justify">{state.bookSelected.description}</p>
-          <br />
+          <TextDescription text={state.bookSelected.description} />
           <br />
           <iframe src={state.bookSelected.url} title={state.bookSelected.title} className="Page--Book"></iframe>
         </div> :

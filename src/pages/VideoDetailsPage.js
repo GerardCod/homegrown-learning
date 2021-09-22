@@ -4,6 +4,7 @@ import AddPodcastComment from '../components/AddPodcastComment';
 import Back from '../components/Back';
 import Comment from '../components/Comment';
 import Loader from '../components/Loader';
+import TextDescription from '../components/TextDescription';
 import { AuthContext } from '../contexts/AuthContext';
 import { VideoContext } from '../contexts/VideoContext';
 import { generateComment, onError, onSuccess } from '../utils';
@@ -43,6 +44,7 @@ const VideoDetailsPage = () => {
             <br />
             <h2 className="Page__Title align--justify">{state.videoSelected.title}</h2>
             <br />
+            <TextDescription text={state.videoSelected.description} />
             <video controls onEnded={handleEnd} className="width--full">
               <source src={state.videoSelected.url} type="video/mp4" />
             </video>

@@ -7,6 +7,7 @@ import Back from '../components/Back';
 import AddPodcastComment from '../components/AddPodcastComment';
 import Comment from '../components/Comment';
 import { AuthContext } from '../contexts/AuthContext';
+import TextDescription from '../components/TextDescription';
 
 const PodcastDetailPage = () => {
   const { state, documentRef, fetchPodcast, addHeardPodcast, addPodcastComment } = useContext(PodcastsContext);
@@ -42,7 +43,7 @@ const PodcastDetailPage = () => {
             <br />
             <h2 className="Page__Title">{state.podcastSelected.title}</h2>
             <br />
-            <p>{state.podcastSelected.description}</p>
+            <TextDescription text={state.podcastSelected.description} />
             <br />
             <audio controls onEnded={hearPodcast}>
               <source src={state.podcastSelected.url} type="audio/mp3" />

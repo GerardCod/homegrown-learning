@@ -9,6 +9,7 @@ import { ActivityContext } from '../contexts/ActivityContext';
 import { AuthContext } from '../contexts/AuthContext';
 import { onError } from '../utils';
 import MaterialLinkItem from '../components/MaterialLinkItem';
+import TextDescription from '../components/TextDescription';
 
 const ActivityDetailsPage = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const ActivityDetailsPage = () => {
             <br />
             <h2 className="Page__Title align--justify">{state.activitySelected.title}</h2>
             <br />
-            <p className="align--justify">{state.activitySelected.description}</p>
+            <TextDescription text={state.activitySelected.description} />
             <br />
             {
               (state.activitySelected.links && state.activitySelected.links.length > 0) &&

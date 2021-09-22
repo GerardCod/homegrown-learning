@@ -132,3 +132,16 @@ export const sortItems = arr => {
     return dateB - dateA;
   });
 }
+
+export const linkRegex = /^https(.+?)+$/g;
+
+export const detectAndCreateLinks = (data, propName = 'description') => {
+  const words = data[propName].split(/[ \n]/);
+  const dataCopy = {...data};
+  for (let word of words) {
+    if (word.match(linkRegex)) {
+      dataCopy[propName] = dataCopy[propName].replace(word, `<a href=${word}>${word}</a>`);
+    }
+  }
+  return dataCopy;
+}
